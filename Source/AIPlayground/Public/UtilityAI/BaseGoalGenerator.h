@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "BaseGoalData.h"
-#include "GoalGeneratorComponent.h"
 #include "UObject/NoExportTypes.h"
 #include "BaseGoalGenerator.generated.h"
 
+class UGoalGeneratorComponent;
 /**
  * 
  */
