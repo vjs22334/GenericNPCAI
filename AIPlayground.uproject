@@ -3,6 +3,17 @@
 	"EngineAssociation": "5.1",
 	"Category": "",
 	"Description": "",
+	"Modules": [
+		{
+			"Name": "AIPlayground",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"CoreUObject",
+				"Engine"
+			]
+		}
+	],
 	"Plugins": [
 		{
 			"Name": "ModelingToolsEditorMode",
