@@ -16,11 +16,26 @@ void UBaseBehaviour::BehaviourEnter(UBaseGoalData* GoalData)
 {
 }
 
-void UBaseBehaviour::BehavourTick(UBaseGoalData* GoalData)
+void UBaseBehaviour::BehaviourTick(UBaseGoalData* GoalData)
 {
 }
 
-float UBaseBehaviour::GetSelectionScore()
+void UBaseBehaviour::BehaviourExit(UBaseGoalData* GoalData)
+{
+	
+}
+
+float UBaseBehaviour::GetSelectionScore(UBaseGoalData* GoalData)
 {
 	return 0;
+}
+
+BehaviourExecutionState UBaseBehaviour::GetBehaviourExecutionState()
+{
+	return M_BehaviourState;
+}
+
+BehaviourInterruptibilityState UBaseBehaviour::GetBehaviourInterruptibiliyState()
+{
+	return M_BehaviourInterruptibilityState;
 }
