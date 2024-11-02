@@ -20,6 +20,21 @@
 				"C:/UnrealProjects/AIPlayground/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/1/AZ/A7GPT109Y6ZTTJD4A7TXER.uasset",
 				"C:/UnrealProjects/AIPlayground/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/D/DE/SWSI13675DVYIZ0N4NF7Y3.uasset",
 				"C:/UnrealProjects/AIPlayground/Content/Characters/AI/BP_NPC_Utility_AI_Contorller.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/MyContent/AI/Tasks/BTTask_RandomMove.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/MyContent/AI/BB_NPC.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/MyContent/AI/BP_NPC.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/MyContent/AI/BP_NPC_AIController.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/MyContent/AI/BP_NPC_Utility_AI_Contorller.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/MyContent/AI/BT_NPC.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/MyContent/PlayerController/RTSControllerGameMode.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/MyContent/PlayerController/RTSController.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/MyContent/PlayerController/CameraActor.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/2/XX/P9G5VY7CUFLOQXE81S8ZXK.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/O5/75GQHLQG5SMEJ0V6S8VQ2W.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/MyContent/PlayerController/BP_PlayerCharacter.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/MyContent/PlayerController/BT_Player.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/MyContent/PlayerController/BB_Player.uasset",
+				"C:/UnrealProjects/AIPlayground/Content/MyContent/PlayerController/BP_PlayerAIController.uasset",
 				"C:/UnrealProjects/AIPlayground/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/AN/YLVCA7Y07WVY0OOYH3OZCS.uasset"
 			]
 		}

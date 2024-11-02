@@ -1,0 +1,88 @@
+<changelist name="Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]" date="1730564784338" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 02-11-2024 21:56 [Changes]" />
+  <binary>
+    <option name="AFTER_PATH" value="Content/MyContent/AI/UtilityAI/BP_UtilityAINPC.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/BP_UtilityAINPC.uasset" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/4/VW/TY7TSUER9KKGHX2BMKSL0L.uasset" />
+    <option name="AFTER_PATH" value="Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/4/VW/TY7TSUER9KKGHX2BMKSL0L.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/TY7TSUER9KKGHX2BMKSL0L.uasset" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Content/MyContent/PlayerController/CameraActor.uasset" />
+    <option name="AFTER_PATH" value="Content/MyContent/PlayerController/CameraActor.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/CameraActor.uasset" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="Content/MyContent/AI/UtilityAI/GoalGenerators/IdleGoalGenrator.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/IdleGoalGenrator.uasset" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Content/MyContent/PlayerController/BP_PlayerCharacter.uasset" />
+    <option name="AFTER_PATH" value="Content/MyContent/PlayerController/BP_PlayerCharacter.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/BP_PlayerCharacter.uasset" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/6/TK/PIQ0B2FNWR15P52TECP27A.uasset" />
+    <option name="AFTER_PATH" value="Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/6/TK/PIQ0B2FNWR15P52TECP27A.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/PIQ0B2FNWR15P52TECP27A.uasset" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/E/GP/22PD314FCWY4ZK61DE3XZC.uasset" />
+    <option name="AFTER_PATH" value="Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/E/GP/22PD314FCWY4ZK61DE3XZC.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/22PD314FCWY4ZK61DE3XZC.uasset" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="Content/MyContent/AI/UtilityAI/BP_UtilityAIAIController.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/BP_UtilityAIAIController.uasset" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/2/XX/P9G5VY7CUFLOQXE81S8ZXK.uasset" />
+    <option name="AFTER_PATH" value="Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/2/XX/P9G5VY7CUFLOQXE81S8ZXK.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/P9G5VY7CUFLOQXE81S8ZXK.uasset" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="Content/MyContent/AI/UtilityAI/GoalGenerators/IdleGoalData.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/IdleGoalData.uasset" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/C/7N/FDH7Y28CQFXDK8P6MM1HXM.uasset" />
+    <option name="AFTER_PATH" value="Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/C/7N/FDH7Y28CQFXDK8P6MM1HXM.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/FDH7Y28CQFXDK8P6MM1HXM.uasset" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Intermediate/CachedAssetRegistry.bin" />
+    <option name="AFTER_PATH" value="Intermediate/CachedAssetRegistry.bin" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/CachedAssetRegistry.bin" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/6/D8/3MZ6M1DB94VN44C87D65WR.uasset" />
+    <option name="AFTER_PATH" value="Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/6/D8/3MZ6M1DB94VN44C87D65WR.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/3MZ6M1DB94VN44C87D65WR.uasset" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Content/MyContent/AI/BP_NPC_AIController.uasset" />
+    <option name="AFTER_PATH" value="Content/MyContent/AI/BP_NPC_AIController.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/BP_NPC_AIController.uasset" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/38/ILOSYCCQQVLQSDTH0UED28.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/ILOSYCCQQVLQSDTH0UED28.uasset" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Saved/AutoScreenshot.png" />
+    <option name="AFTER_PATH" value="Saved/AutoScreenshot.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/AutoScreenshot.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/9/KN/KHZG97SS6AL73U7AXDWH6J.uasset" />
+    <option name="AFTER_PATH" value="Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/9/KN/KHZG97SS6AL73U7AXDWH6J.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/KHZG97SS6AL73U7AXDWH6J.uasset" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/A/KE/N4BV95IQ6QXYM22D1PIDTO.uasset" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/shelf/Uncommitted_changes_before_Update_at_02-11-2024_21_56_[Changes]/N4BV95IQ6QXYM22D1PIDTO.uasset" />
+  </binary>
+</changelist>
