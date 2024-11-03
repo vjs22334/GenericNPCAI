@@ -17,7 +17,7 @@ class AIPLAYGROUND_API UBaseGoalGenerator : public UObject
 	GENERATED_BODY()
 public:
 	UFUNCTION(BlueprintNativeEvent,Category="UtitilyAI")
-	void EvaluateGoal(AActor* goalOwner);
+	void EvaluateGoal(AActor* goalOwner, float DeltaTime);
 
 	UFUNCTION(BlueprintNativeEvent,Category="UtitilyAI")
 	void Initialize(AActor* goalOwner, UGoalGeneratorComponent* owner);

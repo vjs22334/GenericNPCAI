@@ -22,10 +22,10 @@ public:
 	UFUNCTION()
 	void PerceptionUpdated(AActor* Actor, FAIStimulus Stimulus);
 	void SetupPerception(AActor* goalOwner);
-	virtual void EvaluateGoal_Implementation(AActor* goalOwner) override;
+	virtual void EvaluateGoal_Implementation(AActor* goalOwner, float DeltaTime) override;
 	virtual void Initialize_Implementation(AActor* goalOwner, UGoalGeneratorComponent* owner) override;
 
-	private:
+private:
 	UPROPERTY()
 	AActor* M_GoalOwner = nullptr;
 	UPROPERTY()
@@ -38,5 +38,6 @@ public:
 	UGoalGeneratorComponent* M_GoalGeneratorComponent;
 	UPROPERTY(EditAnywhere)
 	float M_SearhGoalExpiryTime = 50.0f;
+	float M_TimeElapsedSinceSearchStart = 0.0f;
 	bool M_PerceptionSetupSuccessful = false;
 }; 

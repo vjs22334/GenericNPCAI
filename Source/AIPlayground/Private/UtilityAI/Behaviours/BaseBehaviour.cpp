@@ -16,9 +16,14 @@ void UBaseBehaviour::Initialize_Implementation(AActor* OwnerActor, UBehaviourSel
 
 void UBaseBehaviour::BehaviourEnter_Implementation(UBaseGoalData* GoalData)
 {
+	if (GoalData == nullptr)
+	{
+		M_BehaviourState = BehaviourExecutionState::FAILED;
+		return;
+	}
 }
 
-void UBaseBehaviour::BehaviourTick_Implementation()
+void UBaseBehaviour::BehaviourTick_Implementation(float DeltaTime)
 {
 }
 

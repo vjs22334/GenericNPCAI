@@ -9,7 +9,6 @@
 
 void UCombatBehaviour::MoveToTarget()
 {
-	M_AIController = UAIBlueprintHelperLibrary::GetAIController(GoalOwner);
 	if (M_AIController)
 	{
 		UPathFollowingComponent* PFComponent = M_AIController->GetPathFollowingComponent();
@@ -47,7 +46,7 @@ void UCombatBehaviour::MoveToTarget()
 void UCombatBehaviour::BehaviourEnter_Implementation(UBaseGoalData* GoalData)
 {
 	Super::BehaviourEnter_Implementation(GoalData);
-	M_GoalData = reinterpret_cast<UCombatGoalData*>(GoalData);
+	M_GoalData = dynamic_cast<UCombatGoalData*>(GoalData);
 	if (M_GoalData == nullptr)
 	{
 		M_BehaviourState = BehaviourExecutionState::FAILED;
@@ -56,6 +55,14 @@ void UCombatBehaviour::BehaviourEnter_Implementation(UBaseGoalData* GoalData)
 	M_TargetActor = M_GoalData->TargetActor;
 
 	if (M_TargetActor == nullptr)
+	{
+		M_BehaviourState = BehaviourExecutionState::FAILED;
+		return;
+	}
+	
+	M_AIController = UAIBlueprintHelperLibrary::GetAIController(GoalOwner);
+
+	if (M_AIController == nullptr)
 	{
 		M_BehaviourState = BehaviourExecutionState::FAILED;
 		return;
@@ -71,22 +78,47 @@ void UCombatBehaviour::BehaviourEnter_Implementation(UBaseGoalData* GoalData)
 
 void UCombatBehaviour::BehaviourExit_Implementation()
 {
+	if (M_AIController != nullptr)
+	{
+		M_AIController->StopMovement();
+	}
+	M_TargetActor = nullptr;
+	M_GoalData = nullptr;
+	M_AIController = nullptr;
 	Super::BehaviourExit_Implementation();
 }
 
-void UCombatBehaviour::BehaviourTick_Implementation()
+void UCombatBehaviour::BehaviourTick_Implementation(float DeltaTime)
 {
-	Super::BehaviourTick_Implementation();
+	Super::BehaviourTick_Implementation(DeltaTime);
+	if (M_GoalData != nullptr && M_GoalData->TargetActor == nullptr)
+	{
+		//we have lost the target
+		M_BehaviourState = BehaviourExecutionState::FAILED;
+	}
 }
 
 bool UCombatBehaviour::CheckPreConditions_Implementation()
 {
-	return Super::CheckPreConditions_Implementation();
+	return true;
 }
 
 float UCombatBehaviour::GetSelectionScore_Implementation(UBaseGoalData* GoalData)
 {
 	return 10.0f;
+}
+
+void UCombatBehaviour::CleanUpPathFollowingDelegate()
+{
+	if (PathFinishDelegateHandle.IsValid())
+	{
+		if (UPathFollowingComponent* PFComp = M_AIController->GetPathFollowingComponent())
+		{
+			PFComp->OnRequestFinished.Remove(PathFinishDelegateHandle);
+		}
+
+		PathFinishDelegateHandle.Reset();
+	}
 }
 
 void UCombatBehaviour::OnMoveRequestFinished(FAIRequestID RequestID, const FPathFollowingResult& Result)
@@ -100,13 +132,5 @@ void UCombatBehaviour::OnMoveRequestFinished(FAIRequestID RequestID, const FPath
 		M_BehaviourState = BehaviourExecutionState::FAILED;
 	}
 
-	if (PathFinishDelegateHandle.IsValid())
-	{
-		if (UPathFollowingComponent* PFComp = M_AIController->GetPathFollowingComponent())
-		{
-			PFComp->OnRequestFinished.Remove(PathFinishDelegateHandle);
-		}
-
-		PathFinishDelegateHandle.Reset();
-	}
+	CleanUpPathFollowingDelegate();
 }

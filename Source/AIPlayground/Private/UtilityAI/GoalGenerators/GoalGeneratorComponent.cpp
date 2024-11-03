@@ -35,7 +35,7 @@ void UGoalGeneratorComponent::TickComponent(float DeltaTime, ELevelTick TickType
 
 	for (UBaseGoalGenerator* GoalGenerator : M_GoalGeneratorRefs)
 	{
-		GoalGenerator->EvaluateGoal(GetOwner());
+		GoalGenerator->EvaluateGoal(GetOwner(), DeltaTime);
 	}
 }
 

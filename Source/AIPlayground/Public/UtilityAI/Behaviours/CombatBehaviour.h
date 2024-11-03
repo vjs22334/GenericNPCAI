@@ -21,9 +21,11 @@ public:
 	void MoveToTarget();
 	virtual void BehaviourEnter_Implementation(UBaseGoalData* GoalData) override;
 	virtual void BehaviourExit_Implementation() override;
-	virtual void BehaviourTick_Implementation() override;
+	virtual void BehaviourTick_Implementation(float DeltaTime) override;
 	virtual bool CheckPreConditions_Implementation() override;
 	virtual float GetSelectionScore_Implementation(UBaseGoalData* GoalData) override;
+	void CleanUpPathFollowingDelegate();
+
 private:
 	virtual void OnMoveRequestFinished(FAIRequestID RequestID, const FPathFollowingResult& Result);
 

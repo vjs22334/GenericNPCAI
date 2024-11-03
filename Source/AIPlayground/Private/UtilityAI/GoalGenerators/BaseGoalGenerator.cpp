@@ -3,7 +3,7 @@
 
 #include "UtilityAI/GoalGenerators/BaseGoalGenerator.h"
 
-void UBaseGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner)
+void UBaseGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner, float DeltaTime)
 {
 }
 

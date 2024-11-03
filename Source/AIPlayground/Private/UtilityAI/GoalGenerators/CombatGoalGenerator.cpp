@@ -31,6 +31,7 @@ void UCombatGoalGenerator::PerceptionUpdated(AActor* Actor, FAIStimulus Stimulus
 				if (M_SearchGoalData!=nullptr)
 				{
 					M_GoalGeneratorComponent->RemoveGoal(M_SearchGoalData);
+					M_SearchGoalData = nullptr;
 				}
 		
 			}
@@ -45,6 +46,7 @@ void UCombatGoalGenerator::PerceptionUpdated(AActor* Actor, FAIStimulus Stimulus
 		
 			if (M_CombatGoalData!=nullptr)
 			{
+				M_CombatGoalData->TargetActor = nullptr; //let the behaviour know the target is lost
 				M_GoalGeneratorComponent->RemoveGoal(M_CombatGoalData);
 				M_CombatGoalData = nullptr;
 			}
@@ -55,6 +57,7 @@ void UCombatGoalGenerator::PerceptionUpdated(AActor* Actor, FAIStimulus Stimulus
 				M_SearchGoalData->Location = Stimulus.StimulusLocation;
 
 				M_GoalGeneratorComponent->AddGoal(M_SearchGoalData);
+				M_TimeElapsedSinceSearchStart = 0;
 			}
 		}
 		
@@ -78,13 +81,24 @@ void UCombatGoalGenerator::SetupPerception(AActor* goalOwner)
 	}
 }
 
-void UCombatGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner)
+void UCombatGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner, float DeltaTime)
 {
-	Super::EvaluateGoal_Implementation(goalOwner);
+	Super::EvaluateGoal_Implementation(goalOwner, DeltaTime);
 	//TODO: should move this to the initialize method. Its here due to not being sure of the onpossess call order before which the ai controller will be null
 	if(!M_PerceptionSetupSuccessful)
 	{
 		SetupPerception(goalOwner);
+	}
+
+	if (M_SearchGoalData != nullptr)
+	{
+		M_TimeElapsedSinceSearchStart += DeltaTime;
+		if (M_TimeElapsedSinceSearchStart >= M_SearhGoalExpiryTime)
+		{
+			M_GoalGeneratorComponent->RemoveGoal(M_SearchGoalData);
+			M_SearchGoalData = nullptr;
+			M_TimeElapsedSinceSearchStart = 0;
+		}
 	}
 }
 

@@ -146,7 +146,7 @@ void UBehaviourSelectorComponent::TickComponent(float DeltaTime, ELevelTick Tick
 			}
 			else
 			{
-				M_CurrentBehaviour->BehaviourTick();
+				M_CurrentBehaviour->BehaviourTick(DeltaTime);
 
 			}
 		}

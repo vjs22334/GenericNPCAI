@@ -60,7 +60,7 @@ public:
 	UFUNCTION(BlueprintNativeEvent,Category="UtitilyAI")
 	void BehaviourEnter(UBaseGoalData* GoalData);
 	UFUNCTION(BlueprintNativeEvent,Category="UtitilyAI")
-	void BehaviourTick();
+	void BehaviourTick(float DeltaTime);
 	UFUNCTION(BlueprintNativeEvent,Category="UtitilyAI")
 	void BehaviourExit();
 	UFUNCTION(BlueprintNativeEvent,Category="UtitilyAI")
