@@ -72,3 +72,12 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+Intermediate/CachedAssetRegistry.bin
+Intermediate/ShaderAutogen/PCD3D_ES3_1/AutogenShaderHeaders.ush
+Intermediate/ShaderAutogen/PCD3D_SM5/AutogenShaderHeaders.ush
+Intermediate/ShaderAutogen/PCD3D_SM6/AutogenShaderHeaders.ush
+Saved/AutoScreenshot.png
+Saved/Config/WindowsEditor/Editor.ini
+Saved/Config/WindowsEditor/EditorPerProjectUserSettings.ini
+Saved/Config/WindowsEditor/Engine.ini
+Saved/Logs/AIPlayground.log
