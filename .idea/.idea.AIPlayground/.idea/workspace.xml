@@ -8,37 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13b46e57-e6cc-4af1-a5ab-31d98787a69c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/AIPlayground.sln.DotSettings.user" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/Behaviours/BP_SearchBehaviour.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/5/GF/2KP1R8TVZ2HJHONKCLHS6Q.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/IdleBehaviour.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/SearchBehaviour.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/AIPlayground/Public/UtilityAI/Behaviours/IdleBehaviour.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/AIPlayground/Public/UtilityAI/Behaviours/SearchBehaviour.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/BP_UtilityAIAIController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/BP_UtilityAIAIController.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/BP_UtilityAINPC.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/BP_UtilityAINPC.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/Behaviours/BP_IdleBehaviour.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/Behaviours/BP_IdleBehaviour.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Maps/ThirdPersonMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Maps/ThirdPersonMap.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/2/XX/P9G5VY7CUFLOQXE81S8ZXK.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/38/ILOSYCCQQVLQSDTH0UED28.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/38/ILOSYCCQQVLQSDTH0UED28.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/TF/2V4H8516XTWGV5ZSE5G1LZ.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/CachedAssetRegistry.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/CachedAssetRegistry.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Saved/AutoScreenshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/AutoScreenshot.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/WindowsEditor/EditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/WindowsEditor/EditorPerProjectUserSettings.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/WindowsEditor/Engine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/WindowsEditor/Engine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Logs/AIPlayground.log" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Logs/AIPlayground.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/AIPlayground.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/AIPlayground.Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/BaseBehaviour.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/BaseBehaviour.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/BehaviourSelectorComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/BehaviourSelectorComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/CombatBehaviour.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/CombatBehaviour.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/GoalGenerators/BaseGoalGenerator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/GoalGenerators/BaseGoalGenerator.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/GoalGenerators/CombatGoalGenerator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/GoalGenerators/CombatGoalGenerator.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/GoalGenerators/GoalGeneratorComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/GoalGenerators/GoalGeneratorComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Public/UtilityAI/Behaviours/BaseBehaviour.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Public/UtilityAI/Behaviours/BaseBehaviour.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Public/UtilityAI/Behaviours/CombatBehaviour.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Public/UtilityAI/Behaviours/CombatBehaviour.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Public/UtilityAI/GoalGenerators/BaseGoalGenerator.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Public/UtilityAI/GoalGenerators/BaseGoalGenerator.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Public/UtilityAI/GoalGenerators/CombatGoalGenerator.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Public/UtilityAI/GoalGenerators/CombatGoalGenerator.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -574,8 +548,17 @@
       <workItem from="1730522280849" duration="2111000" />
       <workItem from="1730533852439" duration="18163000" />
       <workItem from="1730623507243" duration="4442000" />
-      <workItem from="1730628921828" duration="7702000" />
+      <workItem from="1730628921828" duration="9301000" />
     </task>
+    <task id="LOCAL-00001" summary="added a search behaviour and fixed some bugs with behaviour selector">
+      <option name="closed" value="true" />
+      <created>1730639441162</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1730639441162</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -597,6 +580,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="added a search behaviour and fixed some bugs with behaviour selector" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a search behaviour and fixed some bugs with behaviour selector" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -605,11 +590,6 @@
           <url>file://$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/SearchBehaviour.cpp</url>
           <line>124</line>
           <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/SearchBehaviour.cpp</url>
-          <line>57</line>
-          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
