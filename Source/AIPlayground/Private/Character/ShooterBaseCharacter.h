@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "HealthComponent.h"
 #include "HealthSystemInterface.h"
+#include "WeaponComponent.h"
 #include "GameFramework/Character.h"
 #include "ShooterBaseCharacter.generated.h"
 
