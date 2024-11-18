@@ -4,6 +4,7 @@
 #include "ShooterBaseCharacter.h"
 
 #include "HealthComponent.h"
+#include "WeaponComponent.h"
 
 
 // Sets default values
