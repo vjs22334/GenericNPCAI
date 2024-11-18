@@ -5,15 +5,16 @@
 #include "CoreMinimal.h"
 #include "HealthComponent.h"
 #include "HealthSystemInterface.h"
+#include "weaponInterface.h"
 #include "GameFramework/Character.h"
 #include "ShooterBaseCharacter.generated.h"
 
 UCLASS()
-class AIPLAYGROUND_API AShooterBaseCharacter : public ACharacter, public IHealthSystemInterface
+class AIPLAYGROUND_API AShooterBaseCharacter : public ACharacter, public IHealthSystemInterface, public IweaponInterface
 {
 	GENERATED_BODY()
 
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Health, meta = (AllowPrivateAccess = "true"))
 	UHealthComponent* M_HealthComponent;
 
 public:

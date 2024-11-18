@@ -20,6 +20,8 @@ void UHealthComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
+	M_CurrentHealth = MaxHealth;
+
 	// ...
 	
 }
@@ -40,11 +42,11 @@ float UHealthComponent::GetHealth()
 
 float UHealthComponent::GetHealthPercentage()
 {
-	if (M_MaxHealth <= 0)
+	if (MaxHealth <= 0)
 	{
 		return 0;
 	}
-	return (M_CurrentHealth / M_MaxHealth)*100;
+	return (M_CurrentHealth / MaxHealth)*100;
 }
 
 bool UHealthComponent::GetIsDead()
@@ -54,7 +56,7 @@ bool UHealthComponent::GetIsDead()
 
 float UHealthComponent::GetMaxHealth()
 {
-	return M_MaxHealth;
+	return MaxHealth;
 }
 
 

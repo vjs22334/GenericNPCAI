@@ -7,14 +7,13 @@
 #include "HealthComponent.generated.h"
 
 
-UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
+UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent), Blueprintable)
 class AIPLAYGROUND_API UHealthComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
 	float M_CurrentHealth;
-	UPROPERTY(EditDefaultsOnly)
-	float M_MaxHealth;
+	
 
 public:
 	// Sets default values for this component's properties
@@ -25,6 +24,10 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+
+	UPROPERTY(EditDefaultsOnly)
+	float MaxHealth = 100;
+	
 	void ApplyDamage(float Damage);
 	float GetHealth();
 	float GetHealthPercentage();
