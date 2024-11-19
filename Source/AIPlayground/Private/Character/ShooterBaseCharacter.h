@@ -15,7 +15,7 @@ class AIPLAYGROUND_API AShooterBaseCharacter : public ACharacter, public IHealth
 {
 	GENERATED_BODY()
 
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, Category = Health)
 	UHealthComponent* M_HealthComponent;
 
 public:

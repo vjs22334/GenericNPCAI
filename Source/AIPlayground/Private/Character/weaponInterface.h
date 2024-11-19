@@ -25,7 +25,7 @@ public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void FireWeapon();
 
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void ReloadWeapon();
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
