@@ -25,6 +25,7 @@ public:
 	virtual bool CheckPreConditions_Implementation() override;
 	virtual float GetSelectionScore_Implementation(UBaseGoalData* GoalData) override;
 	void CleanUpPathFollowingDelegate();
+	void FireWeapon();
 
 private:
 	virtual void OnMoveRequestFinished(FAIRequestID RequestID, const FPathFollowingResult& Result);

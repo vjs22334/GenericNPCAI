@@ -9,6 +9,26 @@ void UWeaponComponent::SetupWeapon_Implementation()
 	
 }
 
+float UWeaponComponent::GetPercentAmmoLeftInClip_Implementation()
+{
+	return  0;
+}
+
+void UWeaponComponent::FireWeapon_Implementation()
+{
+	
+}
+void UWeaponComponent::ReloadWeapon_Implementation()
+{
+	
+}
+
+int UWeaponComponent::GetAmmoInClip_Implementation()
+{
+	return  0;
+}
+
+
 // Sets default values for this component's properties
 UWeaponComponent::UWeaponComponent()
 {

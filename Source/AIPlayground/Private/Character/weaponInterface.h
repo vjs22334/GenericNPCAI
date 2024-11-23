@@ -7,8 +7,8 @@
 #include "weaponInterface.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE()
-class UweaponInterface : public UInterface
+UINTERFACE(Blueprintable)
+class UWeaponInterface : public UInterface
 {
 	GENERATED_BODY()
 };
@@ -16,7 +16,7 @@ class UweaponInterface : public UInterface
 /**
  * 
  */
-class AIPLAYGROUND_API IweaponInterface
+class AIPLAYGROUND_API IWeaponInterface
 {
 	GENERATED_BODY()
 
@@ -29,7 +29,7 @@ public:
 	void ReloadWeapon();
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	float PercentGetAmmoInClipLeftInClip();
+	float GetPercentAmmoLeftInClip();
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	int GetAmmoInClip();

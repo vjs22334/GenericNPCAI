@@ -31,4 +31,16 @@ public:
 	
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void SetupWeapon();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void FireWeapon();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void ReloadWeapon();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	float GetPercentAmmoLeftInClip();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	int GetAmmoInClip();
 };

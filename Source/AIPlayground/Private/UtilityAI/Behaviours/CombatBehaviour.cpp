@@ -5,6 +5,8 @@
 
 #include "AIController.h"
 #include "Blueprint/AIBlueprintHelperLibrary.h"
+#include "Character/weaponInterface.h"
+#include "GameFramework/Character.h"
 #include "Tasks/AITask_MoveTo.h"
 
 void UCombatBehaviour::MoveToTarget()
@@ -14,7 +16,7 @@ void UCombatBehaviour::MoveToTarget()
 		UPathFollowingComponent* PFComponent = M_AIController->GetPathFollowingComponent();
 		FAIMoveRequest MoveReq;
 		MoveReq.SetAllowPartialPath(true);
-		MoveReq.SetAcceptanceRadius(50);
+		MoveReq.SetAcceptanceRadius(200);
 		MoveReq.SetCanStrafe(true);
 		MoveReq.SetReachTestIncludesAgentRadius(true);
 		MoveReq.SetReachTestIncludesGoalRadius(true);
@@ -96,6 +98,11 @@ void UCombatBehaviour::BehaviourTick_Implementation(float DeltaTime)
 		//we have lost the target
 		M_BehaviourState = BehaviourExecutionState::FAILED;
 	}
+	else
+	{
+		M_AIController->SetFocus(M_TargetActor);
+		FireWeapon();
+	}
 }
 
 bool UCombatBehaviour::CheckPreConditions_Implementation()
@@ -121,11 +128,23 @@ void UCombatBehaviour::CleanUpPathFollowingDelegate()
 	}
 }
 
+void UCombatBehaviour::FireWeapon()
+{
+	if (ACharacter* ownerChar = UECasts_Private::DynamicCast<ACharacter*>(GoalOwner))
+	{
+		if (ownerChar->Implements<UWeaponInterface>())
+		{
+			IWeaponInterface::Execute_FireWeapon(ownerChar);
+		}
+	}
+}
+
 void UCombatBehaviour::OnMoveRequestFinished(FAIRequestID RequestID, const FPathFollowingResult& Result)
 {
 	if (Result.IsSuccess())
 	{
 		M_BehaviourState = BehaviourExecutionState::COMPLETED;
+		
 	}
 	else
 	{

@@ -12,6 +12,7 @@ AShooterBaseCharacter::AShooterBaseCharacter()
 {
 
 	M_HealthComponent = CreateDefaultSubobject<UHealthComponent>(FName("HealthComponent"));
+	M_WeaponComponent = CreateDefaultSubobject<UWeaponComponent>(FName("WeaponComponent"));
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 }
@@ -58,5 +59,30 @@ bool AShooterBaseCharacter::GetIsDead_Implementation()
 float AShooterBaseCharacter::GetMaxHealth_Implementation()
 {
 	return M_HealthComponent->GetMaxHealth();
+}
+
+void AShooterBaseCharacter::FireWeapon_Implementation()
+{
+	M_WeaponComponent->FireWeapon();
+}
+
+int AShooterBaseCharacter::GetAmmo_Implementation()
+{
+	return M_WeaponComponent->GetAmmoInClip();
+}
+
+int AShooterBaseCharacter::GetAmmoInClip_Implementation()
+{
+	return M_WeaponComponent->GetAmmoInClip();
+}
+
+float AShooterBaseCharacter::GetPercentAmmoLeftInClip_Implementation()
+{
+	return M_WeaponComponent->GetPercentAmmoLeftInClip();
+}
+
+void AShooterBaseCharacter::ReloadWeapon_Implementation()
+{
+	M_WeaponComponent->ReloadWeapon();
 }
 
