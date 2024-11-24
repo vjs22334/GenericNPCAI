@@ -8,10 +8,11 @@
 #include "weaponInterface.h"
 #include "WeaponComponent.h"
 #include "GameFramework/Character.h"
+#include "Perception/AISightTargetInterface.h"
 #include "ShooterBaseCharacter.generated.h"
 
 UCLASS()
-class AIPLAYGROUND_API AShooterBaseCharacter : public ACharacter, public IHealthSystemInterface, public IWeaponInterface
+class AIPLAYGROUND_API AShooterBaseCharacter : public ACharacter, public IHealthSystemInterface, public IWeaponInterface, public IAISightTargetInterface
 {
 	GENERATED_BODY()
 
@@ -45,4 +46,7 @@ public:
 	virtual int GetAmmoInClip_Implementation() override;
 	virtual float GetPercentAmmoLeftInClip_Implementation() override;
 	virtual void ReloadWeapon_Implementation() override;
+	virtual bool CanBeSeenFrom(const FVector& ObserverLocation, FVector& OutSeenLocation,
+		int32& NumberOfLoSChecksPerformed, float& OutSightStrength, const AActor* IgnoreActor = nullptr,
+		const bool* bWasVisible = nullptr, int32* UserData = nullptr) const override;
 };

@@ -86,3 +86,24 @@ void AShooterBaseCharacter::ReloadWeapon_Implementation()
 	M_WeaponComponent->ReloadWeapon();
 }
 
+bool AShooterBaseCharacter::CanBeSeenFrom(const FVector& ObserverLocation, FVector& OutSeenLocation,
+	int32& NumberOfLoSChecksPerformed, float& OutSightStrength, const AActor* IgnoreActor, const bool* bWasVisible,
+	int32* UserData) const
+{
+	FHitResult OutHit;
+	FVector SightTargetLocation = this->GetMesh()->GetSocketLocation(FName("neck_01"));
+
+	bool hit = GetWorld()->LineTraceSingleByChannel(OutHit, ObserverLocation, SightTargetLocation,ECC_Visibility,FCollisionQueryParams(FName("LOSTrace"),false,IgnoreActor));
+
+	if (!hit || (IsValid(OutHit.GetActor()) && OutHit.GetActor()->IsOwnedBy(this)))
+	{
+		OutSeenLocation = SightTargetLocation;
+		OutSightStrength = 1;
+		return true;
+	}
+
+	
+	OutSightStrength = 0;
+	return false;
+}
+

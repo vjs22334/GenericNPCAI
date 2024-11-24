@@ -5,9 +5,11 @@
 
 #include "AIController.h"
 #include "Blueprint/AIBlueprintHelperLibrary.h"
+#include "Character/ShooterBaseCharacter.h"
 #include "Character/weaponInterface.h"
 #include "GameFramework/Character.h"
 #include "Tasks/AITask_MoveTo.h"
+#include "Widgets/Text/ISlateEditableTextWidget.h"
 
 void UCombatBehaviour::MoveToTarget()
 {
@@ -100,7 +102,14 @@ void UCombatBehaviour::BehaviourTick_Implementation(float DeltaTime)
 	}
 	else
 	{
-		M_AIController->SetFocus(M_TargetActor);
+		if (AShooterBaseCharacter* targetCharacter = Cast<AShooterBaseCharacter>(M_GoalData->TargetActor))
+		{
+			M_AIController->SetFocalPoint(targetCharacter->GetMesh()->GetSocketLocation("spine_01"));
+		}
+		else
+		{
+			M_AIController->SetFocus(M_TargetActor);
+		}
 		FireWeapon();
 	}
 }
@@ -143,8 +152,7 @@ void UCombatBehaviour::OnMoveRequestFinished(FAIRequestID RequestID, const FPath
 {
 	if (Result.IsSuccess())
 	{
-		M_BehaviourState = BehaviourExecutionState::COMPLETED;
-		
+		// M_BehaviourState = BehaviourExecutionState::COMPLETED;
 	}
 	else
 	{
