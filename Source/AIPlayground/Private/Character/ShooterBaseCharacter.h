@@ -49,4 +49,5 @@ public:
 	virtual bool CanBeSeenFrom(const FVector& ObserverLocation, FVector& OutSeenLocation,
 		int32& NumberOfLoSChecksPerformed, float& OutSightStrength, const AActor* IgnoreActor = nullptr,
 		const bool* bWasVisible = nullptr, int32* UserData = nullptr) const override;
+	virtual FRotator GetBaseAimRotation() const override;
 };

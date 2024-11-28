@@ -15,6 +15,9 @@ void UCombatBehaviour::MoveToTarget()
 {
 	if (M_AIController)
 	{
+		M_CanShoot = false;
+		M_AIController->K2_ClearFocus();
+		
 		UPathFollowingComponent* PFComponent = M_AIController->GetPathFollowingComponent();
 		FAIMoveRequest MoveReq;
 		MoveReq.SetAllowPartialPath(true);
@@ -24,7 +27,7 @@ void UCombatBehaviour::MoveToTarget()
 		MoveReq.SetReachTestIncludesGoalRadius(true);
 		MoveReq.SetUsePathfinding(true);
 		MoveReq.SetGoalActor(M_TargetActor);
-
+		
 		const FPathFollowingRequestResult RequestResult = M_AIController->MoveTo(MoveReq);
 		switch (RequestResult.Code)
 		{
@@ -102,15 +105,18 @@ void UCombatBehaviour::BehaviourTick_Implementation(float DeltaTime)
 	}
 	else
 	{
-		if (AShooterBaseCharacter* targetCharacter = Cast<AShooterBaseCharacter>(M_GoalData->TargetActor))
+		if (M_CanShoot)
 		{
-			M_AIController->SetFocalPoint(targetCharacter->GetMesh()->GetSocketLocation("spine_01"));
+			if (AShooterBaseCharacter* targetCharacter = Cast<AShooterBaseCharacter>(M_GoalData->TargetActor))
+			{
+				M_AIController->SetFocalPoint(targetCharacter->GetMesh()->GetSocketLocation("spine_01"));
+			}
+			else
+			{
+				M_AIController->SetFocus(M_TargetActor);
+			}
+			FireWeapon();
 		}
-		else
-		{
-			M_AIController->SetFocus(M_TargetActor);
-		}
-		FireWeapon();
 	}
 }
 
@@ -153,6 +159,7 @@ void UCombatBehaviour::OnMoveRequestFinished(FAIRequestID RequestID, const FPath
 	if (Result.IsSuccess())
 	{
 		// M_BehaviourState = BehaviourExecutionState::COMPLETED;
+		M_CanShoot = true;
 	}
 	else
 	{

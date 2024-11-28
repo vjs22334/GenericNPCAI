@@ -3,8 +3,11 @@
 
 #include "ShooterBaseCharacter.h"
 
+#include "AIController.h"
 #include "HealthComponent.h"
 #include "WeaponComponent.h"
+#include "Blueprint/AIBlueprintHelperLibrary.h"
+#include "Kismet/KismetMathLibrary.h"
 
 
 // Sets default values
@@ -105,5 +108,23 @@ bool AShooterBaseCharacter::CanBeSeenFrom(const FVector& ObserverLocation, FVect
 	
 	OutSightStrength = 0;
 	return false;
+}
+
+FRotator AShooterBaseCharacter::GetBaseAimRotation() const
+{
+	if (!IsPlayerControlled())
+	{
+		if (AAIController* aiController = Cast<AAIController>(GetController()))
+		{
+		
+			FVector focalPoint = aiController->GetFocalPoint();
+			if (focalPoint != FAISystem::InvalidLocation)
+			{
+				return UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(),focalPoint);
+
+			}
+		}
+	}
+	return Super::GetBaseAimRotation();
 }
 

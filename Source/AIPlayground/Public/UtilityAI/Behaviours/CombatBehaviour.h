@@ -36,6 +36,7 @@ private:
 	UCombatGoalData* M_GoalData = nullptr;
 	FDelegateHandle PathFinishDelegateHandle;
 
+	bool M_CanShoot = false;
 	UPROPERTY()
 	AAIController* M_AIController;
 };
