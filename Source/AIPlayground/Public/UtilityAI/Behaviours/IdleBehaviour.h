@@ -15,7 +15,7 @@ class AIPLAYGROUND_API UIdleBehaviour : public UBaseBehaviour
 	GENERATED_BODY()
 
 public:
-	virtual bool CheckPreConditions_Implementation() override;
+	virtual bool CheckPreConditions_Implementation(UBaseGoalData* GoalData) override;
 	virtual float GetSelectionScore_Implementation(UBaseGoalData* GoalData) override;
 	virtual void BehaviourEnter_Implementation(UBaseGoalData* GoalData) override;
 };

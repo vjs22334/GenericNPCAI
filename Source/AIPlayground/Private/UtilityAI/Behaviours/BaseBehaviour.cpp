@@ -3,7 +3,7 @@
 
 #include "UtilityAI/Behaviours/BaseBehaviour.h"
 
-bool UBaseBehaviour::CheckPreConditions_Implementation()
+bool UBaseBehaviour::CheckPreConditions_Implementation(UBaseGoalData* GoalData)
 {
 	return true;
 }
