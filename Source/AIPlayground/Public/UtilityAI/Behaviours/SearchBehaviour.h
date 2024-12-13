@@ -20,7 +20,7 @@ public:
 	virtual void BehaviourEnter_Implementation(UBaseGoalData* GoalData) override;
 	virtual void BehaviourExit_Implementation() override;
 	virtual void BehaviourTick_Implementation(float DeltaTime) override;
-	virtual bool CheckPreConditions_Implementation() override;
+	virtual bool CheckPreConditions_Implementation(UBaseGoalData* GoalData) override;
 	virtual float GetSelectionScore_Implementation(UBaseGoalData* GoalData) override;
 	virtual void Initialize_Implementation(AActor* OwnerActor, UBehaviourSelectorComponent* owner) override;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Utility AI")

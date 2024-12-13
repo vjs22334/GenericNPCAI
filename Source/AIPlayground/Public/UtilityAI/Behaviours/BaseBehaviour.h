@@ -54,7 +54,7 @@ protected:
 	
 public:
 	UFUNCTION(BlueprintNativeEvent,Category="UtitilyAI")
-	bool CheckPreConditions();
+	bool CheckPreConditions(UBaseGoalData* GoalData);
 	UFUNCTION(BlueprintNativeEvent,Category="UtitilyAI")
 	void Initialize(AActor* OwnerActor, UBehaviourSelectorComponent* owner);
 	UFUNCTION(BlueprintNativeEvent,Category="UtitilyAI")

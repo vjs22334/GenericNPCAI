@@ -120,7 +120,7 @@ void UCombatBehaviour::BehaviourTick_Implementation(float DeltaTime)
 	}
 }
 
-bool UCombatBehaviour::CheckPreConditions_Implementation()
+bool UCombatBehaviour::CheckPreConditions_Implementation(UBaseGoalData* GoalData)
 {
 	return true;
 }

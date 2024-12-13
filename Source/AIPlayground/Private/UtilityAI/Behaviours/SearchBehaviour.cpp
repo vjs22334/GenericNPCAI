@@ -59,7 +59,7 @@ void USearchBehaviour::BehaviourTick_Implementation(float DeltaTime)
 	}
 }
 
-bool USearchBehaviour::CheckPreConditions_Implementation()
+bool USearchBehaviour::CheckPreConditions_Implementation(UBaseGoalData* GoalData)
 {
 	return true;
 }

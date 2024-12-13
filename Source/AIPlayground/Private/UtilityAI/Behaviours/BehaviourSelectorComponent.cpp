@@ -22,11 +22,12 @@ void UBehaviourSelectorComponent::ChooseBehaviourToRun()
 
 	for (UBaseBehaviour* priorityBehaviour : M_PriorityBehaviourRefs)
 	{
-		if(priorityBehaviour->CheckPreConditions())
+		UBaseGoalData* goalData = TryAndGetGoalDataClass(priorityBehaviour->GoalDataClass);
+		if (priorityBehaviour->CanExecuteWithoutGoalData || goalData != nullptr)
 		{
-			UBaseGoalData* goalData = TryAndGetGoalDataClass(priorityBehaviour->GoalDataClass);
-			if (priorityBehaviour->CanExecuteWithoutGoalData || goalData != nullptr)
+			if(priorityBehaviour->CheckPreConditions(goalData))
 			{
+			
 				if(priorityBehaviour->GetSelectionScore(goalData)>CurrentUtitlityScore)
 				{
 					CurrentUtitlityScore = priorityBehaviour->GetSelectionScore(goalData);
@@ -41,10 +42,10 @@ void UBehaviourSelectorComponent::ChooseBehaviourToRun()
 	CurrentUtitlityScore = 0;
 	for (UBaseBehaviour* behaviour : M_BehaviourRefs)
 	{
-		if(behaviour->CheckPreConditions())
+		UBaseGoalData* goalData = TryAndGetGoalDataClass(behaviour->GoalDataClass);
+		if (behaviour->CanExecuteWithoutGoalData || goalData != nullptr)
 		{
-			UBaseGoalData* goalData = TryAndGetGoalDataClass(behaviour->GoalDataClass);
-			if (behaviour->CanExecuteWithoutGoalData || goalData != nullptr)
+			if(behaviour->CheckPreConditions(goalData))
 			{
 				if(behaviour->GetSelectionScore(goalData)>CurrentUtitlityScore)
 				{

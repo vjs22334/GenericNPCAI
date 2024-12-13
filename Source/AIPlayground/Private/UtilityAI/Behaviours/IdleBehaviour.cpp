@@ -3,7 +3,7 @@
 
 #include "UtilityAI/Behaviours/IdleBehaviour.h"
 
-bool UIdleBehaviour::CheckPreConditions_Implementation()
+bool UIdleBehaviour::CheckPreConditions_Implementation(UBaseGoalData* GoalData)
 {
 	return true;
 }
