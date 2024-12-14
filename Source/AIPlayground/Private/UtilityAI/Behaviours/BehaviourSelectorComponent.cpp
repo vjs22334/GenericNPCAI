@@ -107,7 +107,7 @@ void UBehaviourSelectorComponent::BeginPlay()
 	
 	for(TSubclassOf<UBaseBehaviour> baseBehaviourClass : M_BehaviourList)
 	{
-		UBaseBehaviour* BaseBehaviour = NewObject<UBaseBehaviour>(this,baseBehaviourClass);
+		UBaseBehaviour* BaseBehaviour = NewObject<UBaseBehaviour>(this->GetOuter(),baseBehaviourClass);
 		BaseBehaviour->Initialize(GetOwner(),this);
 		M_BehaviourRefs.Add(BaseBehaviour);
 	}

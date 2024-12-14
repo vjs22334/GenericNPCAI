@@ -20,7 +20,7 @@ void UGoalGeneratorComponent::BeginPlay()
 
 	for(TSubclassOf<UBaseGoalGenerator> goalGeneratorClass : M_GoalGenerators)
 	{
-		UBaseGoalGenerator* goalGenerator = NewObject<UBaseGoalGenerator>(this,goalGeneratorClass);
+		UBaseGoalGenerator* goalGenerator = NewObject<UBaseGoalGenerator>(this->GetOuter(),goalGeneratorClass);
 		goalGenerator->Initialize(GetOwner(),this);
 		M_GoalGeneratorRefs.Add(goalGenerator);
 	}

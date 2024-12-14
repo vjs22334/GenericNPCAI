@@ -45,3 +45,14 @@ BehaviourInterruptibilityState UBaseBehaviour::GetBehaviourInterruptibiliyState(
 {
 	return M_BehaviourInterruptibilityState;
 }
+
+UWorld* UBaseBehaviour::GetWorld() const
+{
+	UObject *outer = GetOuter();
+	if (outer && outer->IsA<AActor>() && !outer->HasAnyFlags(RF_ClassDefaultObject))
+	{
+		return outer->GetWorld();
+	}
+
+	return nullptr;
+}

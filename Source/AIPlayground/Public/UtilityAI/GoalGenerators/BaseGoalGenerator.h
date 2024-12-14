@@ -21,4 +21,5 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent,Category="UtitilyAI")
 	void Initialize(AActor* goalOwner, UGoalGeneratorComponent* owner);
+	virtual UWorld* GetWorld() const override;
 };

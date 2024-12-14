@@ -11,3 +11,16 @@ void UBaseGoalGenerator::Initialize_Implementation(AActor* goalOwner, UGoalGener
 {
 	
 }
+
+UWorld* UBaseGoalGenerator::GetWorld() const
+{
+	UObject *outer = GetOuter();
+	if (outer && outer->IsA<AActor>() && !outer->HasAnyFlags(RF_ClassDefaultObject))
+	{
+		return outer->GetWorld();
+	}
+
+	return nullptr;
+}
+	
+

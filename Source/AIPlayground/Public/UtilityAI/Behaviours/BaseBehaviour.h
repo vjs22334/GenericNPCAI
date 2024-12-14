@@ -69,5 +69,5 @@ public:
 	BehaviourExecutionState GetBehaviourExecutionState();
 	UFUNCTION(BlueprintCallable,Category="UtitilyAI")
 	BehaviourInterruptibilityState GetBehaviourInterruptibiliyState();
-	
+	virtual UWorld* GetWorld() const override;
 };
