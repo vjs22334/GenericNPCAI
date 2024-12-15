@@ -54,12 +54,12 @@ void UCombatBehaviour::BehaviourEnter_Implementation(UBaseGoalData* GoalData)
 {
 	Super::BehaviourEnter_Implementation(GoalData);
 	M_GoalData = dynamic_cast<UCombatGoalData*>(GoalData);
-	if (M_GoalData == nullptr)
+	if (M_GoalData == nullptr || M_GoalData->Targets.Num() == 0)
 	{
 		M_BehaviourState = BehaviourExecutionState::FAILED;
 		return;
 	}
-	M_TargetActor = M_GoalData->TargetActor;
+	M_TargetActor = M_GoalData->Targets[0];
 
 	if (M_TargetActor == nullptr)
 	{
@@ -98,7 +98,7 @@ void UCombatBehaviour::BehaviourExit_Implementation()
 void UCombatBehaviour::BehaviourTick_Implementation(float DeltaTime)
 {
 	Super::BehaviourTick_Implementation(DeltaTime);
-	if (M_GoalData != nullptr && M_GoalData->TargetActor == nullptr)
+	if (M_GoalData != nullptr && M_GoalData->Targets.Num() == 0)
 	{
 		//we have lost the target
 		M_BehaviourState = BehaviourExecutionState::FAILED;
@@ -107,7 +107,7 @@ void UCombatBehaviour::BehaviourTick_Implementation(float DeltaTime)
 	{
 		if (M_CanShoot)
 		{
-			if (AShooterBaseCharacter* targetCharacter = Cast<AShooterBaseCharacter>(M_GoalData->TargetActor))
+			if (AShooterBaseCharacter* targetCharacter = Cast<AShooterBaseCharacter>(M_GoalData->Targets[0]))
 			{
 				M_AIController->SetFocalPoint(targetCharacter->GetMesh()->GetSocketLocation("spine_01"));
 			}

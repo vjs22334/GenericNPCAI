@@ -15,5 +15,5 @@ class AIPLAYGROUND_API UCombatGoalData : public UBaseGoalData
 	GENERATED_BODY()
 	public:
 	UPROPERTY()
-	AActor* TargetActor;
+	TArray<AActor*> Targets;
 };
