@@ -34,9 +34,9 @@ class UBaseBehaviour : public UObject
 	GENERATED_BODY()
 
 protected:
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	BehaviourExecutionState M_BehaviourState;
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	BehaviourInterruptibilityState M_BehaviourInterruptibilityState;
 
 public:
