@@ -50,6 +50,7 @@ private:
 	bool M_IsMovingToFiringPosition = false;
 	UPROPERTY()
 	AAIController* M_AIController;
+	UPROPERTY()
 	AShooterBaseCharacter* M_GoalOwner;
 
 

@@ -168,3 +168,13 @@ void UBehaviourSelectorComponent::TickComponent(float DeltaTime, ELevelTick Tick
 	
 }
 
+FString UBehaviourSelectorComponent::GetCurrentBehaviourName()
+{
+	if (M_CurrentBehaviour != nullptr)
+	{
+		return M_CurrentBehaviour->GetClass()->GetName();
+	}
+
+	return "";
+}
+

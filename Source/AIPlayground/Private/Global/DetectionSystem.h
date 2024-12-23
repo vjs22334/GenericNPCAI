@@ -64,8 +64,11 @@ public:
 	virtual void BeginDestroy() override;
 
 private:
+	UPROPERTY()
 	AAIController* m_AIController;
+	UPROPERTY()
 	TArray<AActor*> m_VisibleActors;
+	UPROPERTY()
 	UDetectionSystem* m_DetectionSystem;
 
 	UFUNCTION()

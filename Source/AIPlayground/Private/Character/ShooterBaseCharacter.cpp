@@ -31,6 +31,11 @@ void AShooterBaseCharacter::BeginPlay()
 void AShooterBaseCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (M_HealthComponent->GetIsDead())
+	{
+		Destroy();
+	}
 }
 
 // Called to bind functionality to input

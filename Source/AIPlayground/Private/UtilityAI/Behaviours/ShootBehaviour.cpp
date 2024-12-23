@@ -205,7 +205,7 @@ void UShootBehaviour::OnMoveRequestFinished(FAIRequestID RequestID, const FPathF
 void UShootBehaviour::MoveToFiringPosition()
 {
 	M_IsMovingToFiringPosition = true;
-	int AcceptanceRadius = M_WeaponRange - 20;
+	int AcceptanceRadius = 100;
 
 	if (M_AIController)
 	{
