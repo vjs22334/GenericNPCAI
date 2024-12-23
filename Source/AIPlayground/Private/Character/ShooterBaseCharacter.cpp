@@ -128,3 +128,8 @@ FRotator AShooterBaseCharacter::GetBaseAimRotation() const
 	return Super::GetBaseAimRotation();
 }
 
+UWeaponProperties* AShooterBaseCharacter::GetWeaponProperties_Implementation()
+{
+	return M_WeaponComponent->GetWeaponProperties();
+}
+

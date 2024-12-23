@@ -36,5 +36,8 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	int GetAmmo();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	UWeaponProperties* GetWeaponProperties();
 	
 };

@@ -43,4 +43,7 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	int GetAmmoInClip();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	UWeaponProperties* GetWeaponProperties();
 };

@@ -28,6 +28,12 @@ int UWeaponComponent::GetAmmoInClip_Implementation()
 	return  0;
 }
 
+UWeaponProperties* UWeaponComponent::GetWeaponProperties_Implementation()
+{
+	return WeaponData;
+}
+
+
 
 // Sets default values for this component's properties
 UWeaponComponent::UWeaponComponent()
@@ -60,4 +66,5 @@ void UWeaponComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 
 	// ...
 }
+
 
