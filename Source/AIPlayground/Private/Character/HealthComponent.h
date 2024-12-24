@@ -22,16 +22,27 @@ public:
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 public:
 
 	UPROPERTY(EditDefaultsOnly)
 	float MaxHealth = 100;
+
+	UPROPERTY(EditDefaultsOnly)
+	float TakingDamageThreshold = 20;
+
+	UPROPERTY(EditDefaultsOnly)
+	float TakingDamageDecayRatePerSecond = 1;
 	
 	void ApplyDamage(float Damage);
 	float GetHealth();
 	float GetHealthPercentage();
 	bool GetIsDead();
+	bool GetIsTakingDamage();
 	float GetMaxHealth();
+
+private:
+	float M_CurrentDamageAccumulation = 0;
 
 };

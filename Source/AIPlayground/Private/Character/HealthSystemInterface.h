@@ -32,5 +32,7 @@ public:
 	void ApplyDamage(float Damage);
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	bool GetIsDead();
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	bool GetIsTakingDamage();
 	
 };

@@ -6,6 +6,7 @@
 #include "AIController.h"
 #include "Character/HealthSystemInterface.h"
 #include "GameFramework/Character.h"
+#include "Perception/AISense_Damage.h"
 #include "Perception/AISense_Sight.h"
 
 
@@ -125,6 +126,10 @@ void UDetectionComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		{
 			m_VisibleActors.RemoveAt(i);
 		}
+		else if (m_VisibleActors[i]->IsPendingKill())
+		{
+			m_VisibleActors.RemoveAt(i);
+		}
 		else if (m_VisibleActors[i]->Implements<UHealthSystemInterface>())
 		{
 			if (IHealthSystemInterface::Execute_GetIsDead(m_VisibleActors[i]))
@@ -190,7 +195,7 @@ void UDetectionComponent::PerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
 {
 	if (UDetectionComponent* DetectionComponent = Cast<UDetectionComponent>(Actor->GetComponentByClass(UDetectionComponent::StaticClass())))
 	{
-		if (Stimulus.Type == UAISense::GetSenseID<UAISense_Sight>())
+		if (Stimulus.Type == UAISense::GetSenseID<UAISense_Sight>() || Stimulus.Type == UAISense::GetSenseID<UAISense_Damage>())
 		{
 			if (Stimulus.WasSuccessfullySensed())
 			{

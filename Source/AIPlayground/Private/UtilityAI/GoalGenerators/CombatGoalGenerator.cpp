@@ -70,8 +70,10 @@ void UCombatGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner, float 
 					M_SearchGoalData = nullptr;
 				}
 			}
-			M_CombatGoalData->SelfTargets = selfVisibleActors;
-			M_CombatGoalData->TeamTargets = teamVisibleActors;
+			M_CombatGoalData->SelfTargets.Empty();
+			M_CombatGoalData->TeamTargets.Empty();
+			M_CombatGoalData->SelfTargets.Append(selfVisibleActors);
+			M_CombatGoalData->TeamTargets.Append(teamVisibleActors);
 			M_GoalGeneratorComponent->AddGoal(M_CombatGoalData);
 			if (selfVisibleActors.Num() != 0)
 			{
