@@ -60,8 +60,7 @@ public:
 	TArray<AActor*> GetAllVisibleActorsOfTeam(int32 team);
 	UFUNCTION(BlueprintCallable)
 	TArray<AActor*> GetAllVisibleActorsNotOfTeam(int32 team);
-
-	virtual void BeginDestroy() override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 private:
 	UPROPERTY()

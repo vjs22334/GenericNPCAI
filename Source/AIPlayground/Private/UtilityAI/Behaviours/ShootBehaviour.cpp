@@ -93,7 +93,11 @@ bool UShootBehaviour::ChecKWeaponLos(AActor* TargetActor)
 bool UShootBehaviour::CheckWithinWeaponRange(AActor* TargetActor)
 {
 	FVector rangeToTarget = TargetActor->GetActorLocation() - M_GoalOwner->GetActorLocation();
-	return (rangeToTarget.Length() <= M_WeaponRange - 10);
+	if(rangeToTarget.Length() <= M_WeaponRange)
+	{
+		return true;
+	}
+	return false;
 }
 
 void UShootBehaviour::BehaviourTick_Implementation(float DeltaTime)
@@ -121,6 +125,10 @@ void UShootBehaviour::BehaviourTick_Implementation(float DeltaTime)
 		
 		if (M_SelectedTargetActor == nullptr)
 		{
+			if (M_IsMovingToFiringPosition)
+			{
+				M_AIController->StopMovement();
+			}
 			M_SelectedTargetActor = M_GoalData->SelfTargets.Num() == 0 ? M_GoalData->TeamTargets[0] : M_GoalData->SelfTargets[0];
 		}
 
@@ -226,7 +234,8 @@ void UShootBehaviour::MoveToFiringPosition()
 		switch (RequestResult.Code)
 		{
 		case EPathFollowingRequestResult::Failed:
-			M_BehaviourState = BehaviourExecutionState::FAILED;
+			M_IsMovingToFiringPosition = false;
+			M_SelectedTargetActor = nullptr;
 			break;
 
 		case EPathFollowingRequestResult::AlreadyAtGoal:
