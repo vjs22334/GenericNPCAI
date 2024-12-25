@@ -67,11 +67,11 @@ bool UShootBehaviour::ChecKWeaponLos(AActor* TargetActor)
 {
 	FHitResult OutHit;
 	FVector endLocation = TargetActor->GetActorLocation();
-	FVector startLocation = M_GoalOwner->GetMesh()->GetSocketLocation("spine_01");
+	FVector startLocation = M_GoalOwner->GetMesh()->GetSocketLocation("neck_01");
 
 	if (AShooterBaseCharacter* targetCharacter = Cast<AShooterBaseCharacter>(TargetActor))
 	{
-		 endLocation = targetCharacter->GetMesh()->GetSocketLocation("spine_01");
+		 endLocation = targetCharacter->GetMesh()->GetSocketLocation("neck_01");
 	}
 	
 	bool hit = GetWorld()->LineTraceSingleByChannel(OutHit, startLocation, endLocation,ECC_Visibility,FCollisionQueryParams(FName("LOSTrace"),false,M_GoalOwner));

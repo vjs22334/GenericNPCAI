@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "CoverGoalData.h"
 #include "UtilityAI/GoalGenerators/BaseGoalGenerator.h"
+#include <AIModule\Classes\EnvironmentQuery\EnvQueryTypes.h>
 #include "DefenseGoalGenerator.generated.h"
 
 
@@ -33,5 +34,7 @@ private:
 	UCoverGoalData* M_CoverGoalData = nullptr;
 	UPROPERTY()
 	FVector M_CoverLocation = FVector::Zero();
+
+	bool M_ExecutingQuery = false;
 };
 

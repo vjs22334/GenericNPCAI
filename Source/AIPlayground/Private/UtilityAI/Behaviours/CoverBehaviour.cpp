@@ -6,6 +6,7 @@
 #include "AITypes.h"
 #include "Blueprint/AIBlueprintHelperLibrary.h"
 #include "NavigationSystem.h"
+#include "Character/ShooterBaseCharacter.h"
 #include "GameFramework/Character.h"
 #include "Navigation/PathFollowingComponent.h"
 
@@ -107,12 +108,32 @@ void UCoverBehaviour::BehaviourTick_Implementation(float DeltaTime)
 	}
 }
 
+bool UCoverBehaviour::CheckPreConditions_Implementation(UBaseGoalData* GoalData)
+{
+	if (AShooterBaseCharacter* shooterBaseCharacter = dynamic_cast<AShooterBaseCharacter*>(GoalOwner))
+	{
+		return IHealthSystemInterface::Execute_GetIsTakingDamage(shooterBaseCharacter);
+	}
+	return false;
+	
+}
+
+float UCoverBehaviour::GetSelectionScore_Implementation(UBaseGoalData* GoalData)
+{
+	return 30;
+}
+
+void UCoverBehaviour::Initialize_Implementation(AActor* OwnerActor, UBehaviourSelectorComponent* owner)
+{
+	Super::Initialize_Implementation(OwnerActor, owner);
+}
+
 void UCoverBehaviour::OnMoveRequestFinished(FAIRequestID RequestID, const FPathFollowingResult& Result)
 {
 	if (Result.IsSuccess())
 	{
 		isMoving = false;
-		ACharacter* OwnerActor = Cast<ACharacter>(M_AIController->GetOwner());
+		ACharacter* OwnerActor = Cast<ACharacter>(GoalOwner);
 		if (OwnerActor != nullptr)
 		{
 			CurrentState = Crouching;
@@ -129,7 +150,7 @@ void UCoverBehaviour::OnMoveRequestFinished(FAIRequestID RequestID, const FPathF
 
 void UCoverBehaviour::BehaviourExit_Implementation()
 {
-	ACharacter* OwnerActor = Cast<ACharacter>(M_AIController->GetOwner());
+	ACharacter* OwnerActor = Cast<ACharacter>(GoalOwner);
 	OwnerActor->UnCrouch();
 }
 

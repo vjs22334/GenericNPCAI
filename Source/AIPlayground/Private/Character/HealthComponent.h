@@ -42,7 +42,9 @@ public:
 	bool GetIsTakingDamage();
 	float GetMaxHealth();
 
-private:
 	float M_CurrentDamageAccumulation = 0;
+
+private:
+
 
 };

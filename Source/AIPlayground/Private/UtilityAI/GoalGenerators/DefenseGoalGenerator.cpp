@@ -20,8 +20,9 @@ void UDefenseGoalGenerator::HandleQueryResult(TSharedPtr<FEnvQueryResult> EnvQue
 {
 	if (EnvQueryResult->IsSuccsessful())
 	{
-		M_CoverGoalData->CoverLocation = EnvQueryResult->GetItemAsLocation(0) ;
+		M_CoverGoalData->CoverLocation = EnvQueryResult->GetItemAsLocation(0);
 	}
+	M_ExecutingQuery = false;
 }
 
 void UDefenseGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner, float DeltaTime)
@@ -34,10 +35,14 @@ void UDefenseGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner, float
 		M_GoalGeneratorComponent->AddGoal(M_CoverGoalData);
 	}
 
-	FEnvQueryRequest HidingSpotQueryRequest = FEnvQueryRequest(FindHidingSpotEQS, this);
+	if (!M_ExecutingQuery)
+	{
+		FEnvQueryRequest HidingSpotQueryRequest = FEnvQueryRequest(FindHidingSpotEQS, goalOwner);
 
-	HidingSpotQueryRequest.Execute(
-			EEnvQueryRunMode:: SingleResult, 
-			this,    
-			&UDefenseGoalGenerator::HandleQueryResult);
+		HidingSpotQueryRequest.Execute(
+				EEnvQueryRunMode:: SingleResult, 
+				this,    
+				&UDefenseGoalGenerator::HandleQueryResult);
+		M_ExecutingQuery = true;
+	}
 }
