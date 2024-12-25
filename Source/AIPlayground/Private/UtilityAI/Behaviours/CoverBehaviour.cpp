@@ -76,6 +76,10 @@ void UCoverBehaviour::BehaviourTick_Implementation(float DeltaTime)
 					case EPathFollowingRequestResult::RequestSuccessful:
 						{
 							PathFinishDelegateHandle = PFComponent->OnRequestFinished.AddUObject(this, &UCoverBehaviour::OnMoveRequestFinished);
+							if (M_ShooterBaseGoalOwner != nullptr)
+							{
+								M_ShooterBaseGoalOwner->ReservedCoverLocation = M_CurrentCoverLocation;
+							}
 							isMoving = true;
 							break;
 						}
@@ -122,6 +126,7 @@ float UCoverBehaviour::GetSelectionScore_Implementation(UBaseGoalData* GoalData)
 void UCoverBehaviour::Initialize_Implementation(AActor* OwnerActor, UBehaviourSelectorComponent* owner)
 {
 	Super::Initialize_Implementation(OwnerActor, owner);
+	M_ShooterBaseGoalOwner = Cast<AShooterBaseCharacter>(OwnerActor);
 }
 
 void UCoverBehaviour::OnMoveRequestFinished(FAIRequestID RequestID, const FPathFollowingResult& Result)
@@ -139,6 +144,10 @@ void UCoverBehaviour::OnMoveRequestFinished(FAIRequestID RequestID, const FPathF
 	else
 	{
 		M_BehaviourState = BehaviourExecutionState::FAILED;
+	}
+	if (M_ShooterBaseGoalOwner != nullptr)
+	{
+		M_ShooterBaseGoalOwner->ReservedCoverLocation = FVector::ZeroVector;
 	}
 	isMoving = false;
 	CleanUpPathFollowingDelegate();

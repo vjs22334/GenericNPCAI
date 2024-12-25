@@ -30,6 +30,9 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+	UPROPERTY(BlueprintReadWrite)
+	FVector ReservedCoverLocation = FVector::ZeroVector;
+	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

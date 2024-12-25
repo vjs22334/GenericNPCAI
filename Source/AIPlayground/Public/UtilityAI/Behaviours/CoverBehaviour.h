@@ -6,6 +6,7 @@
 #include "AIController.h"
 #include "UtilityAI/Behaviours/BaseBehaviour.h"
 #include "UtilityAI/GoalGenerators/CoverGoalData.h"
+#include <AIPlayground/Private/Character/ShooterBaseCharacter.h>
 #include "CoverBehaviour.generated.h"
 
 /**
@@ -38,6 +39,8 @@ private:
 	
 	UPROPERTY()
 	UCoverGoalData* M_CoverGoalData = nullptr;
+	UPROPERTY()
+	AShooterBaseCharacter* M_ShooterBaseGoalOwner = nullptr;
 	FVector M_CurrentCoverLocation;
 	AAIController* M_AIController;
 	float M_TimeElapsedSinceEQSQueryStart = 0;
