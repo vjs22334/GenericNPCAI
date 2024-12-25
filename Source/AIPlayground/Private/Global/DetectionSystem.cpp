@@ -4,7 +4,9 @@
 #include "DetectionSystem.h"
 
 #include "AIController.h"
+#include "Character/HealthSystemInterface.h"
 #include "GameFramework/Character.h"
+#include "Perception/AISense_Damage.h"
 #include "Perception/AISense_Sight.h"
 
 
@@ -117,6 +119,23 @@ void UDetectionComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
+
+	for (int i = 0; i < m_VisibleActors.Num(); i++)
+	{
+		if (m_VisibleActors[i] == nullptr)
+		{
+			m_VisibleActors.RemoveAt(i);
+		}
+		else if (m_VisibleActors[i]->IsPendingKill())
+		{
+			m_VisibleActors.RemoveAt(i);
+		}
+		else if (m_VisibleActors[i]->Implements<UHealthSystemInterface>())
+		{
+			if (IHealthSystemInterface::Execute_GetIsDead(m_VisibleActors[i]))
+			m_VisibleActors.RemoveAt(i);
+		}
+	}
 }
 
 
@@ -163,11 +182,20 @@ TArray<AActor*> UDetectionComponent::GetAllVisibleActorsNotOfTeam(int32 Team)
 	return result;
 }
 
+void UDetectionComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	Super::EndPlay(EndPlayReason);
+	if (m_DetectionSystem != nullptr)
+	{
+		m_DetectionSystem->UnregisterDetectionComponent(this);
+	}
+}
+
 void UDetectionComponent::PerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
 {
 	if (UDetectionComponent* DetectionComponent = Cast<UDetectionComponent>(Actor->GetComponentByClass(UDetectionComponent::StaticClass())))
 	{
-		if (Stimulus.Type == UAISense::GetSenseID<UAISense_Sight>())
+		if (Stimulus.Type == UAISense::GetSenseID<UAISense_Sight>() || Stimulus.Type == UAISense::GetSenseID<UAISense_Damage>())
 		{
 			if (Stimulus.WasSuccessfullySensed())
 			{
@@ -181,13 +209,6 @@ void UDetectionComponent::PerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
 	}
 }
 
-void UDetectionComponent::BeginDestroy()
-{
-	Super::BeginDestroy();
-	if (m_DetectionSystem != nullptr)
-	{
-		m_DetectionSystem->UnregisterDetectionComponent(this);
-	}
-}
+
 
 

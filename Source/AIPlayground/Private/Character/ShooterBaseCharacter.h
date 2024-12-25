@@ -51,4 +51,5 @@ public:
 		const bool* bWasVisible = nullptr, int32* UserData = nullptr) const override;
 	virtual FRotator GetBaseAimRotation() const override;
 	virtual UWeaponProperties* GetWeaponProperties_Implementation() override;
+	virtual bool GetIsTakingDamage_Implementation() override;
 };

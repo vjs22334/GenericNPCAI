@@ -138,3 +138,8 @@ UWeaponProperties* AShooterBaseCharacter::GetWeaponProperties_Implementation()
 	return M_WeaponComponent->GetWeaponProperties();
 }
 
+bool AShooterBaseCharacter::GetIsTakingDamage_Implementation()
+{
+	return M_HealthComponent->GetIsTakingDamage();
+}
+

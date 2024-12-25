@@ -9,7 +9,7 @@ UHealthComponent::UHealthComponent()
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = false;
+	PrimaryComponentTick.bCanEverTick = true;
 
 	// ...
 }
@@ -26,9 +26,17 @@ void UHealthComponent::BeginPlay()
 	
 }
 
+void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType,
+	FActorComponentTickFunction* ThisTickFunction)
+{
+	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+	M_CurrentDamageAccumulation -= TakingDamageDecayRatePerSecond*DeltaTime;
+}
+
 void UHealthComponent::ApplyDamage(float Damage)
 {
 	M_CurrentHealth -= Damage;
+	M_CurrentDamageAccumulation += Damage;
 	if (M_CurrentHealth < 0)
 	{
 		M_CurrentHealth = 0;
@@ -51,7 +59,12 @@ float UHealthComponent::GetHealthPercentage()
 
 bool UHealthComponent::GetIsDead()
 {
-	return M_CurrentHealth == 0;
+	return M_CurrentHealth <= 0;
+}
+
+bool UHealthComponent::GetIsTakingDamage()
+{
+	return M_CurrentDamageAccumulation >= TakingDamageThreshold;
 }
 
 float UHealthComponent::GetMaxHealth()

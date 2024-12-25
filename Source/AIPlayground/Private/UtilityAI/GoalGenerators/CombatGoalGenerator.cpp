@@ -31,6 +31,7 @@ void UCombatGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner, float 
 	{
 		TArray<AActor*> selfVisibleActors = M_DetectionComponent->GetAllVisibleActorsNotOfTeam(M_DetectionComponent->MyTeam);
 		TArray<AActor*> teamVisibleActors;
+		teamVisibleActors.Empty();
 		if (UDetectionSystem* detectionSystem = goalOwner->GetWorld()->GetGameInstance()->GetSubsystem<UDetectionSystem>())
 		{
 			teamVisibleActors.Append(detectionSystem->GetAllTeamVisibleActorsNotOfTeam(M_DetectionComponent->MyTeam,M_DetectionComponent->MyTeam));
@@ -40,7 +41,8 @@ void UCombatGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner, float 
 			// stopped seeing a target player
 			if (M_CombatGoalData!=nullptr)
 			{
-				M_CombatGoalData->SelfTargets.Empty(); //let the behaviour know the target is lost
+				M_CombatGoalData->SelfTargets.Empty();
+				M_CombatGoalData->TeamTargets.Empty();//let the behaviour know the target is lost
 				M_GoalGeneratorComponent->RemoveGoal(M_CombatGoalData);
 				M_CombatGoalData = nullptr;
 			}
@@ -68,8 +70,10 @@ void UCombatGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner, float 
 					M_SearchGoalData = nullptr;
 				}
 			}
-			M_CombatGoalData->SelfTargets = selfVisibleActors;
-			M_CombatGoalData->TeamTargets = teamVisibleActors;
+			M_CombatGoalData->SelfTargets.Empty();
+			M_CombatGoalData->TeamTargets.Empty();
+			M_CombatGoalData->SelfTargets.Append(selfVisibleActors);
+			M_CombatGoalData->TeamTargets.Append(teamVisibleActors);
 			M_GoalGeneratorComponent->AddGoal(M_CombatGoalData);
 			if (selfVisibleActors.Num() != 0)
 			{
