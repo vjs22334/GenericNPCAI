@@ -30,7 +30,10 @@ void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 	FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-	M_CurrentDamageAccumulation -= TakingDamageDecayRatePerSecond*DeltaTime;
+	if (M_CurrentDamageAccumulation >= 0)
+	{
+		M_CurrentDamageAccumulation -= TakingDamageDecayRatePerSecond*DeltaTime;
+	}
 }
 
 void UHealthComponent::ApplyDamage(float Damage)

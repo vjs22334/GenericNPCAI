@@ -46,14 +46,6 @@ void UCombatGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner, float 
 				M_GoalGeneratorComponent->RemoveGoal(M_CombatGoalData);
 				M_CombatGoalData = nullptr;
 			}
-
-			if (M_SearchGoalData == nullptr && M_CombatTargetActor != nullptr)
-			{
-				M_SearchGoalData = NewObject<USearchGoalData>(this);
-				M_SearchGoalData->Location = M_CombatTargetActor->GetActorLocation();
-				M_GoalGeneratorComponent->AddGoal(M_SearchGoalData);
-				M_TimeElapsedSinceSearchStart = 0;
-			}
 		}
 		else
 		{
@@ -63,12 +55,7 @@ void UCombatGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner, float 
 				M_CombatGoalData = NewObject<UCombatGoalData>(this);
 
 				M_GoalGeneratorComponent->AddGoal(M_CombatGoalData);
-				// remove search area goal if any
-				if (M_SearchGoalData!=nullptr)
-				{
-					M_GoalGeneratorComponent->RemoveGoal(M_SearchGoalData);
-					M_SearchGoalData = nullptr;
-				}
+				
 			}
 			M_CombatGoalData->SelfTargets.Empty();
 			M_CombatGoalData->TeamTargets.Empty();
@@ -87,16 +74,7 @@ void UCombatGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner, float 
 		
 	}
 
-	if (M_SearchGoalData != nullptr)
-	{
-		M_TimeElapsedSinceSearchStart += DeltaTime;
-		if (M_TimeElapsedSinceSearchStart >= M_SearhGoalExpiryTime)
-		{
-			M_GoalGeneratorComponent->RemoveGoal(M_SearchGoalData);
-			M_SearchGoalData = nullptr;
-			M_TimeElapsedSinceSearchStart = 0;
-		}
-	}
+	
 }
 
 void UCombatGoalGenerator::Initialize_Implementation(AActor* goalOwner, UGoalGeneratorComponent* owner)

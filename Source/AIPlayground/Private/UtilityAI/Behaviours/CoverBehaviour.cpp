@@ -15,7 +15,7 @@ void UCoverBehaviour::BehaviourEnter_Implementation(UBaseGoalData* GoalData)
 {
 	Super::BehaviourEnter_Implementation(GoalData);
 
-	M_BehaviourInterruptibilityState = BehaviourInterruptibilityState::INTERRUPTIBLE;
+	M_BehaviourInterruptibilityState = BehaviourInterruptibilityState::NOTINTERRUPTIBLE;
 	
 	M_BehaviourState = BehaviourExecutionState::RUNNING;
 
@@ -32,34 +32,22 @@ void UCoverBehaviour::BehaviourEnter_Implementation(UBaseGoalData* GoalData)
 		M_BehaviourState = BehaviourExecutionState::FAILED;
 		return;	
 	}
+	isMoving = false;
+	CurrentState = Moving;
 	
 }
 
 void UCoverBehaviour::BehaviourTick_Implementation(float DeltaTime)
 {
 	Super::BehaviourTick_Implementation(DeltaTime);
-	M_CurrentCoverLocation = M_CoverGoalData-> CoverLocation;
+
 	switch (CurrentState)
 	{
-	case WaitingForEQS :
-		if (M_CurrentCoverLocation == FVector::ZeroVector)
-		{
-			if (M_TimeElapsedSinceEQSQueryStart > MaxEQSQueryTime)
-			{
-				M_BehaviourState = BehaviourExecutionState::FAILED;
-				return;
-			}
-			M_TimeElapsedSinceEQSQueryStart += DeltaTime;
-		}
-		else
-		{
-			CurrentState = Moving;
-		}
-		break;
-		
 	case Moving :
+		DrawDebugSphere(GetWorld(),M_CurrentCoverLocation,200 ,16,FColor(255, 0, 0),false, -1, 0,5);
 		if (!isMoving)
 		{
+			M_CurrentCoverLocation = M_CoverGoalData-> CoverLocation;
 			if (M_AIController != nullptr)
 			{
 				if (UNavigationSystemV1* const NavigationSystem = UNavigationSystemV1::GetCurrent(GetWorld()))
@@ -97,7 +85,7 @@ void UCoverBehaviour::BehaviourTick_Implementation(float DeltaTime)
 				}
 			}
 		}
-		
+		break;
 	case Crouching :
 		if (M_TimeElapsedSinceCrouchStart > MaxCrouchTime)
 		{
@@ -105,14 +93,22 @@ void UCoverBehaviour::BehaviourTick_Implementation(float DeltaTime)
 			M_BehaviourState = BehaviourExecutionState::COMPLETED;
 		}
 		M_TimeElapsedSinceCrouchStart += DeltaTime;
+		break;
 	}
 }
 
 bool UCoverBehaviour::CheckPreConditions_Implementation(UBaseGoalData* GoalData)
 {
+	UCoverGoalData* CoverGoalData = Cast<UCoverGoalData>(GoalData);
 	if (AShooterBaseCharacter* shooterBaseCharacter = dynamic_cast<AShooterBaseCharacter*>(GoalOwner))
 	{
-		return IHealthSystemInterface::Execute_GetIsTakingDamage(shooterBaseCharacter);
+		if (IHealthSystemInterface::Execute_GetIsTakingDamage(shooterBaseCharacter))
+		{
+			if (CoverGoalData != nullptr && CoverGoalData->CoverLocation != FVector::ZeroVector)
+			{
+				return true;
+			}
+		}
 	}
 	return false;
 	
@@ -132,26 +128,45 @@ void UCoverBehaviour::OnMoveRequestFinished(FAIRequestID RequestID, const FPathF
 {
 	if (Result.IsSuccess())
 	{
-		isMoving = false;
 		ACharacter* OwnerActor = Cast<ACharacter>(GoalOwner);
 		if (OwnerActor != nullptr)
 		{
 			CurrentState = Crouching;
+			M_TimeElapsedSinceCrouchStart = 0;
 			OwnerActor->Crouch();
-			M_BehaviourInterruptibilityState = BehaviourInterruptibilityState::NOTINTERRUPTIBLE;
 		}
 	}
-		else
+	else
+	{
+		M_BehaviourState = BehaviourExecutionState::FAILED;
+	}
+	isMoving = false;
+	CleanUpPathFollowingDelegate();
+}
+
+void UCoverBehaviour::CleanUpPathFollowingDelegate()
+{
+	if (PathFinishDelegateHandle.IsValid())
+	{
+		if (UPathFollowingComponent* PFComp = M_AIController->GetPathFollowingComponent())
 		{
-			M_BehaviourState = BehaviourExecutionState::FAILED;
-			return;
+			PFComp->OnRequestFinished.Remove(PathFinishDelegateHandle);
 		}
+
+		PathFinishDelegateHandle.Reset();
+	}
 }
 
 void UCoverBehaviour::BehaviourExit_Implementation()
 {
-	ACharacter* OwnerActor = Cast<ACharacter>(GoalOwner);
-	OwnerActor->UnCrouch();
+	if (M_AIController != nullptr)
+	{
+		M_AIController->StopMovement();
+	}
+	if (ACharacter* OwnerActor = Cast<ACharacter>(GoalOwner))
+	{
+		OwnerActor->UnCrouch();
+	}
 }
 
 	

@@ -24,15 +24,18 @@ public:
 	virtual void Initialize_Implementation(AActor* OwnerActor, UBehaviourSelectorComponent* owner) override;
 	
 	
-	
-	UPROPERTY(EditAnywhere)
-	float MaxEQSQueryTime = 5;
+
 	UPROPERTY(EditAnywhere)
 	float MaxCrouchTime = 5;
 	
 	
 
 private:
+	void OnMoveRequestFinished(FAIRequestID RequestID, const FPathFollowingResult& Result);
+	void CleanUpPathFollowingDelegate();
+
+
+	
 	UPROPERTY()
 	UCoverGoalData* M_CoverGoalData = nullptr;
 	FVector M_CurrentCoverLocation;
@@ -40,14 +43,12 @@ private:
 	float M_TimeElapsedSinceEQSQueryStart = 0;
 	float M_TimeElapsedSinceCrouchStart = 0;
 	FDelegateHandle PathFinishDelegateHandle;
-	void OnMoveRequestFinished(FAIRequestID RequestID, const FPathFollowingResult& Result);;
 	bool isMoving = false;
 	enum CoverBehaviourState
 	{
-		WaitingForEQS,
 		Moving,
 		Crouching
 	};
-	CoverBehaviourState CurrentState = WaitingForEQS;
+	CoverBehaviourState CurrentState = Moving;
 };
 

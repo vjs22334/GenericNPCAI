@@ -155,7 +155,7 @@ TArray<AActor*> UDetectionComponent::GetAllVisibleActorsOfTeam(int32 Team)
 			{
 				if (DetectionComponent->MyTeam == Team)
 				{
-					result.Add(m_VisibleActors[i]);
+					result.AddUnique(m_VisibleActors[i]);
 				}
 			}
 		}
@@ -174,7 +174,7 @@ TArray<AActor*> UDetectionComponent::GetAllVisibleActorsNotOfTeam(int32 Team)
 			{
 				if (DetectionComponent->MyTeam != Team)
 				{
-					result.Add(m_VisibleActors[i]);
+					result.AddUnique(m_VisibleActors[i]);
 				}
 			}
 		}
@@ -199,9 +199,9 @@ void UDetectionComponent::PerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
 		{
 			if (Stimulus.WasSuccessfullySensed())
 			{
-				m_VisibleActors.Add(Actor);
+				m_VisibleActors.AddUnique(Actor);
 			}
-			else
+			else if (Stimulus.IsExpired())
 			{
 				m_VisibleActors.Remove(Actor);
 			}
