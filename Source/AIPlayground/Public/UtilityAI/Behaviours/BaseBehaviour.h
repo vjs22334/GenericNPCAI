@@ -46,6 +46,9 @@ public:
 	UPROPERTY(EditAnywhere)
 	bool CanExecuteWithoutGoalData = false;
 
+	UPROPERTY(EditAnywhere)
+	float BehaviourCoolDown = 0;
+
 protected:
 	UPROPERTY()
 	AActor* GoalOwner = nullptr;
