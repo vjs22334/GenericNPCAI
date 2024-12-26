@@ -43,6 +43,7 @@ void UShootBehaviour::BehaviourExit_Implementation()
 	if (M_AIController != nullptr)
 	{
 		M_AIController->StopMovement();
+		M_AIController->K2_ClearFocus();
 	}
 	M_SelectedTargetActor = nullptr;
 	M_GoalData = nullptr;
@@ -105,7 +106,7 @@ void UShootBehaviour::BehaviourTick_Implementation(float DeltaTime)
 	Super::BehaviourTick_Implementation(DeltaTime);
 	if (M_GoalData == nullptr || ( M_GoalData->SelfTargets.Num() == 0 && M_GoalData->TeamTargets.Num() == 0))
 	{
-		//we have no targets in line of sight
+		//we have no visible targets
 		M_BehaviourState = BehaviourExecutionState::FAILED;
 	}
 	else if (!IsAmmoInClip())
@@ -115,9 +116,23 @@ void UShootBehaviour::BehaviourTick_Implementation(float DeltaTime)
 	}
 	else
 	{
+		
+		M_AllVisibleTargets.Empty();
+		M_AllVisibleTargets.Append(M_GoalData->SelfTargets);
+		M_AllVisibleTargets.Append(M_GoalData->TeamTargets);
+
+		M_ShootableTargets.Empty();
+		for (AActor* Target : M_AllVisibleTargets)
+		{
+			if (ChecKWeaponLos(Target) && CheckWithinWeaponRange(Target))
+			{
+				M_ShootableTargets.Add(Target);
+			}
+		}
+		
 		if (M_SelectedTargetActor != nullptr)
 		{
-			if ((!M_GoalData->SelfTargets.Contains(M_SelectedTargetActor))&&(!M_GoalData->TeamTargets.Contains(M_SelectedTargetActor)))
+			if (!M_ShootableTargets.Contains(M_SelectedTargetActor) && !M_IsMovingToFiringPosition)
 			{
 				M_SelectedTargetActor = nullptr;
 			}
@@ -129,7 +144,17 @@ void UShootBehaviour::BehaviourTick_Implementation(float DeltaTime)
 			{
 				M_AIController->StopMovement();
 			}
-			M_SelectedTargetActor = M_GoalData->SelfTargets.Num() == 0 ? M_GoalData->TeamTargets[0] : M_GoalData->SelfTargets[0];
+			// select a new target
+			if (M_ShootableTargets.Num() > 0)
+			{
+				int i = FMath::RandRange(0,M_ShootableTargets.Num()-1);
+				M_SelectedTargetActor = M_ShootableTargets[i];
+			}
+			else
+			{
+				int i = FMath::RandRange(0,M_ShootableTargets.Num()-1);
+				M_SelectedTargetActor = M_AllVisibleTargets[i];
+			}
 		}
 
 		M_CanShoot = ChecKWeaponLos(M_SelectedTargetActor) && CheckWithinWeaponRange(M_SelectedTargetActor);

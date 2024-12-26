@@ -18,9 +18,13 @@ void UDefenseGoalGenerator::Initialize_Implementation(AActor* goalOwner, UGoalGe
 
 void UDefenseGoalGenerator::HandleQueryResult(TSharedPtr<FEnvQueryResult> EnvQueryResult)
 {
-	if (EnvQueryResult->IsSuccsessful())
+	if (EnvQueryResult->FEnvQueryResult::IsSuccessful())
 	{
 		M_CoverGoalData->CoverLocation = EnvQueryResult->GetItemAsLocation(0);
+	}
+	else
+	{
+		M_CoverGoalData->CoverLocation = FVector::Zero();
 	}
 	M_ExecutingQuery = false;
 }

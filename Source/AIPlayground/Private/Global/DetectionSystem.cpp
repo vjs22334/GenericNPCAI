@@ -201,7 +201,7 @@ void UDetectionComponent::PerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
 			{
 				m_VisibleActors.AddUnique(Actor);
 			}
-			else if (Stimulus.IsExpired())
+			else
 			{
 				m_VisibleActors.Remove(Actor);
 			}

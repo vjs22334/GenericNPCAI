@@ -53,5 +53,10 @@ private:
 	UPROPERTY()
 	AShooterBaseCharacter* M_GoalOwner;
 
+	UPROPERTY()
+	TArray<AActor*> M_AllVisibleTargets;
+
+	UPROPERTY()
+	TArray<AActor*> M_ShootableTargets;
 
 };

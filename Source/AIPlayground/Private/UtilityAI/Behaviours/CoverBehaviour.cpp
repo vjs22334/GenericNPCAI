@@ -8,6 +8,7 @@
 #include "NavigationSystem.h"
 #include "Character/ShooterBaseCharacter.h"
 #include "GameFramework/Character.h"
+#include "Global/CoverReservationSystem.h"
 #include "Navigation/PathFollowingComponent.h"
 
 
@@ -76,9 +77,9 @@ void UCoverBehaviour::BehaviourTick_Implementation(float DeltaTime)
 					case EPathFollowingRequestResult::RequestSuccessful:
 						{
 							PathFinishDelegateHandle = PFComponent->OnRequestFinished.AddUObject(this, &UCoverBehaviour::OnMoveRequestFinished);
-							if (M_ShooterBaseGoalOwner != nullptr)
+							if (UCoverReservationSystem* CoverReservationSystem = GetWorld()->GetGameInstance()->GetSubsystem<UCoverReservationSystem>())
 							{
-								M_ShooterBaseGoalOwner->ReservedCoverLocation = M_CurrentCoverLocation;
+								CoverReservationSystem->ReserveCoverLocation(M_CurrentCoverLocation);
 							}
 							isMoving = true;
 							break;
@@ -145,10 +146,6 @@ void UCoverBehaviour::OnMoveRequestFinished(FAIRequestID RequestID, const FPathF
 	{
 		M_BehaviourState = BehaviourExecutionState::FAILED;
 	}
-	if (M_ShooterBaseGoalOwner != nullptr)
-	{
-		M_ShooterBaseGoalOwner->ReservedCoverLocation = FVector::ZeroVector;
-	}
 	isMoving = false;
 	CleanUpPathFollowingDelegate();
 }
@@ -168,6 +165,10 @@ void UCoverBehaviour::CleanUpPathFollowingDelegate()
 
 void UCoverBehaviour::BehaviourExit_Implementation()
 {
+	if (UCoverReservationSystem* CoverReservationSystem = GetWorld()->GetGameInstance()->GetSubsystem<UCoverReservationSystem>())
+	{
+		CoverReservationSystem->UnReserveCoverLocation(M_CurrentCoverLocation);
+	}
 	if (M_AIController != nullptr)
 	{
 		M_AIController->StopMovement();
