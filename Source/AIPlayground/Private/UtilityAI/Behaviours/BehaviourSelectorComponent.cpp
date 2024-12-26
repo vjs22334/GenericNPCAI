@@ -25,15 +25,19 @@ void UBehaviourSelectorComponent::ChooseBehaviourToRun()
 		UBaseGoalData* goalData = TryAndGetGoalDataClass(priorityBehaviour->GoalDataClass);
 		if (priorityBehaviour->CanExecuteWithoutGoalData || goalData != nullptr)
 		{
-			if(priorityBehaviour->CheckPreConditions(goalData))
+			bool IsInCoolDown = M_CurrentBehaviourCoolDownMap.Contains(priorityBehaviour) && M_CurrentBehaviourCoolDownMap[priorityBehaviour] > priorityBehaviour->BehaviourCoolDown;
+			if (!IsInCoolDown)
 			{
-			
-				if(priorityBehaviour->GetSelectionScore(goalData)>CurrentUtitlityScore)
+				if(priorityBehaviour->CheckPreConditions(goalData))
 				{
-					CurrentUtitlityScore = priorityBehaviour->GetSelectionScore(goalData);
-					M_NextChosenBehaviour = priorityBehaviour;
-					M_NextChosenBehaviourGoalData = goalData;
+					if(priorityBehaviour->GetSelectionScore(goalData)>CurrentUtitlityScore)
+					{
+						CurrentUtitlityScore = priorityBehaviour->GetSelectionScore(goalData);
+						M_NextChosenBehaviour = priorityBehaviour;
+						M_NextChosenBehaviourGoalData = goalData;
+					}
 				}
+				
 			}
 			
 		}
@@ -45,13 +49,18 @@ void UBehaviourSelectorComponent::ChooseBehaviourToRun()
 		UBaseGoalData* goalData = TryAndGetGoalDataClass(behaviour->GoalDataClass);
 		if (behaviour->CanExecuteWithoutGoalData || goalData != nullptr)
 		{
-			if(behaviour->CheckPreConditions(goalData))
+			bool IsInCooldown = M_CurrentBehaviourCoolDownMap.Contains(behaviour) && M_CurrentBehaviourCoolDownMap[behaviour] <= behaviour->BehaviourCoolDown;
+			if (!IsInCooldown)
 			{
-				if(behaviour->GetSelectionScore(goalData)>CurrentUtitlityScore)
+				if(behaviour->CheckPreConditions(goalData))
 				{
-					CurrentUtitlityScore = behaviour->GetSelectionScore(goalData);
-					M_NextChosenBehaviour = behaviour;
-					M_NextChosenBehaviourGoalData = goalData;
+					
+					if(behaviour->GetSelectionScore(goalData)>CurrentUtitlityScore)
+					{
+						CurrentUtitlityScore = behaviour->GetSelectionScore(goalData);
+						M_NextChosenBehaviour = behaviour;
+						M_NextChosenBehaviourGoalData = goalData;
+					}
 				}
 			}
 		}
@@ -74,6 +83,10 @@ void UBehaviourSelectorComponent::SwitchToNewBehaviour()
 	if(M_CurrentBehaviour!=nullptr)
 	{
 		M_CurrentBehaviour->BehaviourExit();
+		if (M_CurrentBehaviour->BehaviourCoolDown > 0)
+		{
+			M_CurrentBehaviourCoolDownMap.FindOrAdd(M_CurrentBehaviour) = 0;
+		}
 	}
 	M_CurrentBehaviour = M_NextChosenBehaviour;
 	M_CurrentBehaviourGoalData = M_NextChosenBehaviourGoalData;
@@ -164,6 +177,14 @@ void UBehaviourSelectorComponent::TickComponent(float DeltaTime, ELevelTick Tick
 	else if (M_NextChosenBehaviour != nullptr)
 	{
 		SwitchToNewBehaviour();
+	}
+
+	for (UBaseBehaviour* behaviour : M_BehaviourRefs)
+	{
+		if (M_CurrentBehaviourCoolDownMap.Contains(behaviour))
+		{
+			M_CurrentBehaviourCoolDownMap[behaviour] += DeltaTime;
+		}
 	}
 	
 }

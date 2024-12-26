@@ -31,6 +31,9 @@ private:
 	UPROPERTY()
 	TArray<UBaseGoalData*> M_CurrentGoalDatas;
 
+	UPROPERTY()
+	TMap<UBaseBehaviour*, float> M_CurrentBehaviourCoolDownMap;
+
 public:
 	UPROPERTY(EditAnywhere)
 	TArray<TSubclassOf<UBaseBehaviour>> M_BehaviourList;
