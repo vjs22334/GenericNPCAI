@@ -13,6 +13,7 @@ void UShootBehaviour::BehaviourEnter_Implementation(UBaseGoalData* GoalData)
 {
 	Super::BehaviourEnter_Implementation(GoalData);
 	M_GoalData = dynamic_cast<UCombatGoalData*>(GoalData);
+
 	if (M_GoalData == nullptr || (M_GoalData->SelfTargets.Num() == 0 && M_GoalData->TeamTargets.Num() == 0))
 	{
 		M_BehaviourState = BehaviourExecutionState::FAILED;
@@ -30,16 +31,13 @@ void UShootBehaviour::BehaviourEnter_Implementation(UBaseGoalData* GoalData)
 
 	M_BehaviourState = BehaviourExecutionState::RUNNING;
 	M_BehaviourInterruptibilityState = BehaviourInterruptibilityState::INTERRUPTIBLE;
-	if (M_GoalOwner->Implements<UWeaponInterface>())
-	{
-		UWeaponProperties* weapondata = IWeaponInterface::Execute_GetWeaponProperties(M_GoalOwner);
-		M_WeaponRange = weapondata->WeaponBulletRange;
-	}
+	
 	
 }
 
 void UShootBehaviour::BehaviourExit_Implementation()
 {
+	Super::BehaviourExit_Implementation();
 	if (M_AIController != nullptr)
 	{
 		M_AIController->StopMovement();
@@ -48,7 +46,6 @@ void UShootBehaviour::BehaviourExit_Implementation()
 	M_SelectedTargetActor = nullptr;
 	M_GoalData = nullptr;
 	M_AIController = nullptr;
-	Super::BehaviourExit_Implementation();
 }
 
 void UShootBehaviour::ShootTarget()
@@ -101,13 +98,33 @@ bool UShootBehaviour::CheckWithinWeaponRange(AActor* TargetActor)
 	return false;
 }
 
+void UShootBehaviour::RefreshTargetLists(UCombatGoalData* GoalData)
+{
+	if (GoalData == nullptr)
+	{
+		return;
+	}
+	M_AllVisibleTargets.Empty();
+	M_AllVisibleTargets.Append(GoalData->SelfTargets);
+	M_AllVisibleTargets.Append(GoalData->TeamTargets);
+
+	M_ShootableTargets.Empty();
+	for (AActor* Target : M_AllVisibleTargets)
+	{
+		if (ChecKWeaponLos(Target) && CheckWithinWeaponRange(Target))
+		{
+			M_ShootableTargets.Add(Target);
+		}
+	}
+}
+
 void UShootBehaviour::BehaviourTick_Implementation(float DeltaTime)
 {
 	Super::BehaviourTick_Implementation(DeltaTime);
 	if (M_GoalData == nullptr || ( M_GoalData->SelfTargets.Num() == 0 && M_GoalData->TeamTargets.Num() == 0))
 	{
 		//we have no visible targets
-		M_BehaviourState = BehaviourExecutionState::FAILED;
+		M_BehaviourState = BehaviourExecutionState::COMPLETED;
 	}
 	else if (!IsAmmoInClip())
 	{
@@ -117,22 +134,16 @@ void UShootBehaviour::BehaviourTick_Implementation(float DeltaTime)
 	else
 	{
 		
-		M_AllVisibleTargets.Empty();
-		M_AllVisibleTargets.Append(M_GoalData->SelfTargets);
-		M_AllVisibleTargets.Append(M_GoalData->TeamTargets);
-
-		M_ShootableTargets.Empty();
-		for (AActor* Target : M_AllVisibleTargets)
+		RefreshTargetLists(M_GoalData);
+		if (M_ShootableTargets.Num() == 0)
 		{
-			if (ChecKWeaponLos(Target) && CheckWithinWeaponRange(Target))
-			{
-				M_ShootableTargets.Add(Target);
-			}
+			M_BehaviourState = BehaviourExecutionState::COMPLETED;
+			return;
 		}
 		
 		if (M_SelectedTargetActor != nullptr)
 		{
-			if (!M_ShootableTargets.Contains(M_SelectedTargetActor) && !M_IsMovingToFiringPosition)
+			if (!M_ShootableTargets.Contains(M_SelectedTargetActor))
 			{
 				M_SelectedTargetActor = nullptr;
 			}
@@ -140,34 +151,20 @@ void UShootBehaviour::BehaviourTick_Implementation(float DeltaTime)
 		
 		if (M_SelectedTargetActor == nullptr)
 		{
-			if (M_IsMovingToFiringPosition)
-			{
-				M_AIController->StopMovement();
-			}
 			// select a new target
-			if (M_ShootableTargets.Num() > 0)
-			{
-				int i = FMath::RandRange(0,M_ShootableTargets.Num()-1);
-				M_SelectedTargetActor = M_ShootableTargets[i];
-			}
-			else
-			{
-				int i = FMath::RandRange(0,M_ShootableTargets.Num()-1);
-				M_SelectedTargetActor = M_AllVisibleTargets[i];
-			}
+			int i = FMath::RandRange(0,M_ShootableTargets.Num()-1);
+			M_SelectedTargetActor = M_ShootableTargets[i];
 		}
 
 		M_CanShoot = ChecKWeaponLos(M_SelectedTargetActor) && CheckWithinWeaponRange(M_SelectedTargetActor);
 		if (M_CanShoot)
 		{
-			//Cancel Any MoveCommand if there is one
-			M_AIController->StopMovement();
 			ShootTarget();
 		}
-		else if (!M_IsMovingToFiringPosition)
-		{
-			MoveToFiringPosition();
-		}
+		// else if (!M_IsMovingToFiringPosition)
+		// {
+		// 	MoveToFiringPosition();
+		// }
 	}
 }
 
@@ -192,7 +189,21 @@ bool UShootBehaviour::CheckPreConditions_Implementation(UBaseGoalData* GoalData)
 	}
 	
 	//do I have ammo in clip
-	return IsAmmoInClip();
+	if (!IsAmmoInClip())
+	{
+		return false;
+	}
+
+	//DO we have a target in weapon range?
+	if (UCombatGoalData* CombatGoalData = Cast<UCombatGoalData>(GoalData))
+	{
+		RefreshTargetLists(CombatGoalData);
+		return M_ShootableTargets.Num() > 0;
+	}
+	
+	return false;
+	
+	
 	
 }
 
@@ -206,6 +217,11 @@ void UShootBehaviour::Initialize_Implementation(AActor* OwnerActor, UBehaviourSe
 {
 	Super::Initialize_Implementation(OwnerActor, owner);
 	M_GoalOwner = Cast<AShooterBaseCharacter>(GoalOwner);
+	if (M_GoalOwner->Implements<UWeaponInterface>())
+	{
+		UWeaponProperties* weapondata = IWeaponInterface::Execute_GetWeaponProperties(M_GoalOwner);
+		M_WeaponRange = weapondata->WeaponBulletRange;
+	}
 }
 
 void UShootBehaviour::CleanUpPathFollowingDelegate()
