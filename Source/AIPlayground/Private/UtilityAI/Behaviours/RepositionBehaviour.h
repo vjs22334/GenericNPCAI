@@ -4,18 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
-#include "AITypes.h"
 #include "Character/ShooterBaseCharacter.h"
-#include "Navigation/PathFollowingComponent.h"
+#include "Character/WeaponProperties.h"
 #include "UtilityAI/Behaviours/BaseBehaviour.h"
 #include "UtilityAI/GoalGenerators/CombatGoalData.h"
-#include "ShootBehaviour.generated.h"
+#include "RepositionBehaviour.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class AIPLAYGROUND_API UShootBehaviour : public UBaseBehaviour
+class AIPLAYGROUND_API URepositionBehaviour : public UBaseBehaviour
 {
 	GENERATED_BODY()
 
@@ -27,39 +26,26 @@ public:
 	virtual float GetSelectionScore_Implementation(UBaseGoalData* GoalData) override;
 	virtual void Initialize_Implementation(AActor* OwnerActor, UBehaviourSelectorComponent* owner) override;
 
-
 private:
 	virtual void OnMoveRequestFinished(FAIRequestID RequestID, const FPathFollowingResult& Result);
-	bool ChecKWeaponLos(AActor* TargetActor);
-	bool CheckWithinWeaponRange(AActor* TargetActor);
-	void RefreshTargetLists(UCombatGoalData* GoalData);
 	void CleanUpPathFollowingDelegate();
 	void MoveToFiringPosition();
-	void FireWeapon();
+	void RefreshTargetLists(UCombatGoalData* GoalData);
 	bool IsAmmoInClip();
-	void ShootTarget();
-
-
 
 	UPROPERTY()
 	AActor* M_SelectedTargetActor = nullptr;
 	UPROPERTY()
-	UCombatGoalData* M_GoalData = nullptr;
-	FDelegateHandle PathFinishDelegateHandle;
-
-	float M_WeaponRange = 100.0f;
-
-	bool M_CanShoot = false;
-	bool M_IsMovingToFiringPosition = false;
+	AShooterBaseCharacter* M_GoalOwner;
 	UPROPERTY()
 	AAIController* M_AIController;
 	UPROPERTY()
-	AShooterBaseCharacter* M_GoalOwner;
-
-	UPROPERTY()
 	TArray<AActor*> M_AllVisibleTargets;
-
+	float M_WeaponRange = 100;
 	UPROPERTY()
-	TArray<AActor*> M_ShootableTargets;
+	UCombatGoalData* M_GoalData;
+	FDelegateHandle PathFinishDelegateHandle;
+	bool M_IsMoving = false;
 
 };
+
