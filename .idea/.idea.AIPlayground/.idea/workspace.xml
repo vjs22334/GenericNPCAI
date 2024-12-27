@@ -7,40 +7,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13b46e57-e6cc-4af1-a5ab-31d98787a69c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/Animation/Anims/GrenadeThrow.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/Animation/Anims/nadethrow_Montage.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/Animation/Anims/throwanim.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/Animation/Character/Mannequins/Materials/Instances/Manny/MI_Manny_00_Team_A.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/Animation/Character/Mannequins/Materials/Instances/Manny/MI_Manny_00_Team_B.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/Animation/Character/Mannequins/Materials/Instances/Manny/MI_Manny_01_Team_A.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/Animation/Character/Mannequins/Materials/Instances/Manny/MI_Manny_01_Team_B.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/A_Nade.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/Weapon/BP_Grenade.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/Character/GrenadeComponent.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/Character/GrenadeComponent.h" afterDir="false" />
+    <list default="true" id="e9c02080-df8e-421c-82ed-1fd1fe64a053" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Animation/Character/Mannequins/Materials/Instances/Manny/MI_Manny_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Animation/Character/Mannequins/Materials/Instances/Manny/MI_Manny_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Animation/Character/Mannequins/Materials/Instances/Manny/MI_Manny_02.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Animation/Character/Mannequins/Materials/Instances/Manny/MI_Manny_02.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Shooter_AI_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Shooter_AI_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Shooter_Player_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Shooter_Player_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Template_ShooterBaseCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Template_ShooterBaseCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Maps/GYM.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Maps/GYM.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/CachedAssetRegistry.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/CachedAssetRegistry.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/ShaderAutogen/PCD3D_ES3_1/AutogenShaderHeaders.ush" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/ShaderAutogen/PCD3D_ES3_1/AutogenShaderHeaders.ush" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/ShaderAutogen/PCD3D_SM5/AutogenShaderHeaders.ush" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/ShaderAutogen/PCD3D_SM5/AutogenShaderHeaders.ush" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intermediate/ShaderAutogen/PCD3D_SM6/AutogenShaderHeaders.ush" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/ShaderAutogen/PCD3D_SM6/AutogenShaderHeaders.ush" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/AutoScreenshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/AutoScreenshot.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/Config/WindowsEditor/EditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/WindowsEditor/EditorPerProjectUserSettings.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/Logs/AIPlayground.log" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Logs/AIPlayground.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/ShootBehaviour.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/ShootBehaviour.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DpaMonitoringSettings">
-    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,30 +26,16 @@
     &quot;assignee&quot;: &quot;vjs22334&quot;
   }
 }</component>
-  <component name="GitLabMergeRequestsSettings">{}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/vjs22334/GenericNPCAI.git&quot;,
     &quot;accountId&quot;: &quot;54245ab6-c7b9-4d7a-8a11-e9c744785bfa&quot;
   }
 }</component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/AIPlayground/UHT/BaseBehaviour.gen.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/AIPlayground/Private/Character/GrenadeComponent.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/AIPlayground/Private/Character/GrenadeComponent.h" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="KubernetesApiProvider">{}</component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="Toolset" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
+  &quot;associatedIndex&quot;: 7
 }</component>
-  <component name="ProjectId" id="2dU3dxxXpHtz0kTfWW3NSEA8nFL" />
+  <component name="ProjectId" id="2qneYnLIjbKMFbZpBtghdXjKghm" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -84,32 +45,23 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;C++ Project.AIPlayground.executor&quot;: &quot;Debug&quot;,
-    &quot;C/C++ Project.AIPlayground.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;C/C++ Project.Unnamed.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;UnrealLogSettings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="CidrLocalAttachDebugger.recentlyUsed">
-      <recent name="com.jetbrains.rider.cpp.debugger.RiderCppLLDBDriverConfiguration" />
-    </key>
-  </component>
   <component name="RunManager">
-    <configuration name="AIPlayground" type="CppProject" factoryName="C++ Project">
+    <configuration name="Unnamed" type="CppProject" factoryName="C++ Project" nameIsGenerated="true">
       <configuration_1 setup="1">
-        <option name="CONFIGURATION" value="Development Editor" />
+        <option name="CONFIGURATION" value="BuiltWithUnrealBuildTool" />
         <option name="PLATFORM" value="Win64" />
         <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
         <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
@@ -118,71 +70,11 @@
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="0" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
-        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/AIPlayground.vcxproj" />
+        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/UE5.vcxproj" />
       </configuration_1>
-      <configuration_2 setup="1">
-        <option name="CONFIGURATION" value="DebugGame Editor" />
-        <option name="PLATFORM" value="Win64" />
-        <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
-        <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
-        <option name="PROGRAM_PARAMETERS" value="$(LocalDebuggerCommandArguments)" />
-        <option name="WORKING_DIRECTORY" value="$(LocalDebuggerWorkingDirectory)" />
-        <option name="PASS_PARENT_ENVS" value="1" />
-        <option name="USE_EXTERNAL_CONSOLE" value="0" />
-        <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
-        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/AIPlayground.vcxproj" />
-      </configuration_2>
-      <configuration_3 setup="1">
-        <option name="CONFIGURATION" value="Shipping" />
-        <option name="PLATFORM" value="Win64" />
-        <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
-        <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
-        <option name="PROGRAM_PARAMETERS" value="$(LocalDebuggerCommandArguments)" />
-        <option name="WORKING_DIRECTORY" value="$(LocalDebuggerWorkingDirectory)" />
-        <option name="PASS_PARENT_ENVS" value="1" />
-        <option name="USE_EXTERNAL_CONSOLE" value="0" />
-        <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
-        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/AIPlayground.vcxproj" />
-      </configuration_3>
-      <configuration_4 setup="1">
-        <option name="CONFIGURATION" value="DebugGame" />
-        <option name="PLATFORM" value="Win64" />
-        <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
-        <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
-        <option name="PROGRAM_PARAMETERS" value="$(LocalDebuggerCommandArguments)" />
-        <option name="WORKING_DIRECTORY" value="$(LocalDebuggerWorkingDirectory)" />
-        <option name="PASS_PARENT_ENVS" value="1" />
-        <option name="USE_EXTERNAL_CONSOLE" value="0" />
-        <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
-        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/AIPlayground.vcxproj" />
-      </configuration_4>
-      <configuration_5 setup="1">
-        <option name="CONFIGURATION" value="Development" />
-        <option name="PLATFORM" value="Win64" />
-        <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
-        <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
-        <option name="PROGRAM_PARAMETERS" value="$(LocalDebuggerCommandArguments)" />
-        <option name="WORKING_DIRECTORY" value="$(LocalDebuggerWorkingDirectory)" />
-        <option name="PASS_PARENT_ENVS" value="1" />
-        <option name="USE_EXTERNAL_CONSOLE" value="0" />
-        <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
-        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/AIPlayground.vcxproj" />
-      </configuration_5>
-      <configuration_6 setup="1">
-        <option name="CONFIGURATION" value="Development_Editor" />
-        <option name="PLATFORM" value="x64" />
-        <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
-        <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
-        <option name="PROGRAM_PARAMETERS" value="$(LocalDebuggerCommandArguments)" />
-        <option name="WORKING_DIRECTORY" value="$(LocalDebuggerWorkingDirectory)" />
-        <option name="PASS_PARENT_ENVS" value="1" />
-        <option name="USE_EXTERNAL_CONSOLE" value="0" />
-        <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
-        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/AIPlayground.vcxproj" />
-      </configuration_6>
-      <option name="DEFAULT_PROJECT_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/AIPlayground.vcxproj" />
-      <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/AIPlayground.vcxproj" />
-      <option name="AUTO_SELECT_PRIORITY" value="10010" />
+      <option name="DEFAULT_PROJECT_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/UE5.vcxproj" />
+      <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/UE5.vcxproj" />
+      <option name="AUTO_SELECT_PRIORITY" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -191,82 +83,21 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="13b46e57-e6cc-4af1-a5ab-31d98787a69c" name="Changes" comment="" />
-      <created>1710048921917</created>
+      <changelist id="e9c02080-df8e-421c-82ed-1fd1fe64a053" name="Changes" comment="" />
+      <created>1735302821042</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1710048921917</updated>
-      <workItem from="1710048923076" duration="75000" />
-      <workItem from="1710049917640" duration="72000" />
-      <workItem from="1710050618970" duration="3326000" />
-      <workItem from="1710069228408" duration="12893000" />
-      <workItem from="1712566517850" duration="13379000" />
-      <workItem from="1712651882795" duration="5035000" />
-      <workItem from="1712744311621" duration="1617000" />
-      <workItem from="1713097353773" duration="7988000" />
-      <workItem from="1715523218192" duration="628000" />
-      <workItem from="1715524001579" duration="6000" />
-      <workItem from="1715524727798" duration="3517000" />
-      <workItem from="1716720341083" duration="6615000" />
-      <workItem from="1729517848995" duration="352000" />
-      <workItem from="1730352108830" duration="375000" />
-      <workItem from="1730352562182" duration="7992000" />
-      <workItem from="1730454336616" duration="6912000" />
-      <workItem from="1730480396804" duration="972000" />
-      <workItem from="1730522280849" duration="2111000" />
-      <workItem from="1730533852439" duration="18163000" />
-      <workItem from="1730623507243" duration="4442000" />
-      <workItem from="1730628921828" duration="9301000" />
-      <workItem from="1731839880912" duration="4129000" />
-      <workItem from="1731844062934" duration="5582000" />
-      <workItem from="1735222901489" duration="2021000" />
-      <workItem from="1735236159483" duration="353000" />
-      <workItem from="1735236535428" duration="81000" />
+      <updated>1735302821042</updated>
+      <workItem from="1735302823155" duration="677000" />
+      <workItem from="1735304068574" duration="126000" />
+      <workItem from="1735304223339" duration="91000" />
     </task>
-    <task id="LOCAL-00001" summary="added a search behaviour and fixed some bugs with behaviour selector">
-      <option name="closed" value="true" />
-      <created>1730639441162</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1730639441162</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="added a search behaviour and fixed some bugs with behaviour selector" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a search behaviour and fixed some bugs with behaviour selector" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/SearchBehaviour.cpp</url>
-          <line>124</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />

@@ -132,7 +132,7 @@ void UShootBehaviour::BehaviourTick_Implementation(float DeltaTime)
 		
 		if (M_SelectedTargetActor != nullptr)
 		{
-			if (!M_ShootableTargets.Contains(M_SelectedTargetActor) && !M_IsMovingToFiringPosition)
+			if (M_ShootableTargets.Num() > 0 && !M_ShootableTargets.Contains(M_SelectedTargetActor))
 			{
 				M_SelectedTargetActor = nullptr;
 			}
