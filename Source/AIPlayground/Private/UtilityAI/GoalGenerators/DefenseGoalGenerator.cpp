@@ -13,7 +13,6 @@ void UDefenseGoalGenerator::Initialize_Implementation(AActor* goalOwner, UGoalGe
 	Super::Initialize_Implementation(goalOwner, owner);
 	M_GoalOwner = goalOwner;
 	M_GoalGeneratorComponent = owner;
-	
 }
 
 void UDefenseGoalGenerator::HandleQueryResult(TSharedPtr<FEnvQueryResult> EnvQueryResult)

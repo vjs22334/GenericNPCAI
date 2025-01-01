@@ -58,6 +58,40 @@ TArray<AActor*> UDetectionSystem::GetAllTeamVisibleActors(int32 QuerierTeam)
 	return Result;
 }
 
+TArray<AActor*> UDetectionSystem::GetAllTeamActorsOfTeam(int32 Team)
+{
+
+	TArray<AActor*> Result;
+	if (TArray<UDetectionComponent*>* DetectionComponents = m_DetectionMap.Find(Team))
+	{
+		for (int32 i = 0; i < DetectionComponents->Num(); i++)
+		{
+			Result.AddUnique((*DetectionComponents)[i]->GetOwner());
+		}
+	}
+	return Result;
+}
+
+TArray<AActor*> UDetectionSystem::GetAllActorsNotOfTeam(int32 Team)
+{
+	TArray<AActor*> Result;
+	TArray<TArray<UDetectionComponent*>> DetectionComponentsArray;
+	m_DetectionMap.GenerateValueArray(DetectionComponentsArray);
+	for (int32 i = 0; i < DetectionComponentsArray.Num(); i++)
+	{
+		for (int32 j = 0; j < DetectionComponentsArray[i].Num(); j++)
+		{
+			if (DetectionComponentsArray[i][j]->MyTeam != Team)
+			{
+				Result.AddUnique(DetectionComponentsArray[i][j]->GetOwner());
+			}
+		}
+	}
+	
+	return Result;
+
+}
+
 void UDetectionSystem::RegisterDetectionComponent(class UDetectionComponent* DetectionComponent)
 {
 	int32 Team = DetectionComponent->MyTeam;

@@ -31,7 +31,7 @@ protected:
 
 public:
 	UPROPERTY(BlueprintReadWrite)
-	FVector ReservedCoverLocation = FVector::ZeroVector;
+	AActor* TargetToAttack = nullptr;
 	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

@@ -24,6 +24,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	TArray<AActor*> GetAllTeamVisibleActors(int32 QuerierTeam);
 
+	UFUNCTION(BlueprintCallable)
+	TArray<AActor*> GetAllTeamActorsOfTeam(int32 Team);
+
+	UFUNCTION(BlueprintCallable)
+	TArray<AActor*> GetAllActorsNotOfTeam(int32 Team);
+
 	void RegisterDetectionComponent(class UDetectionComponent* DetectionComponent);
 	void UnregisterDetectionComponent(class UDetectionComponent* DetectionComponent);
 

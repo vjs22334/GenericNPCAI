@@ -8,7 +8,7 @@
 #include "NavigationSystem.h"
 #include "Character/ShooterBaseCharacter.h"
 #include "GameFramework/Character.h"
-#include "Global/CoverReservationSystem.h"
+#include "Global/EQSReservationSystem.h"
 #include "Navigation/PathFollowingComponent.h"
 
 
@@ -35,7 +35,53 @@ void UCoverBehaviour::BehaviourEnter_Implementation(UBaseGoalData* GoalData)
 	}
 	isMoving = false;
 	CurrentState = Moving;
+	SelectCoverAndStartMove();
 	
+}
+
+void UCoverBehaviour::SelectCoverAndStartMove()
+{
+	M_CurrentCoverLocation = M_CoverGoalData-> CoverLocation;
+	if (M_AIController != nullptr)
+	{
+		if (UNavigationSystemV1* const NavigationSystem = UNavigationSystemV1::GetCurrent(GetWorld()))
+		{
+			UPathFollowingComponent* PFComponent = M_AIController->GetPathFollowingComponent();
+			FAIMoveRequest MoveReq;
+			MoveReq.SetAllowPartialPath(true);
+			MoveReq.SetAcceptanceRadius(50);
+			MoveReq.SetCanStrafe(true);
+			MoveReq.SetReachTestIncludesAgentRadius(true);
+			MoveReq.SetReachTestIncludesGoalRadius(true);
+			MoveReq.SetUsePathfinding(true);
+			MoveReq.SetGoalLocation(M_CurrentCoverLocation);
+
+			const FPathFollowingRequestResult RequestResult = M_AIController->MoveTo(MoveReq);
+			switch (RequestResult.Code)
+			{
+			case EPathFollowingRequestResult::Failed:
+				M_BehaviourState = BehaviourExecutionState::FAILED;
+				break;
+
+			case EPathFollowingRequestResult::AlreadyAtGoal:
+				OnMoveRequestFinished(RequestResult.MoveId, FPathFollowingResult(EPathFollowingResult::Success, FPathFollowingResultFlags::AlreadyAtGoal));
+				break;
+
+			case EPathFollowingRequestResult::RequestSuccessful:
+				{
+					PathFinishDelegateHandle = PFComponent->OnRequestFinished.AddUObject(this, &UCoverBehaviour::OnMoveRequestFinished);
+					if (UEQSReservationSystem* CoverReservationSystem = GetWorld()->GetGameInstance()->GetSubsystem<UEQSReservationSystem>())
+					{
+						CoverReservationSystem->ReserveCoverLocation(M_CurrentCoverLocation);
+					}
+					isMoving = true;
+					break;
+				}
+			default:
+				break;
+			}
+		}
+	}
 }
 
 void UCoverBehaviour::BehaviourTick_Implementation(float DeltaTime)
@@ -48,47 +94,7 @@ void UCoverBehaviour::BehaviourTick_Implementation(float DeltaTime)
 		DrawDebugSphere(GetWorld(),M_CurrentCoverLocation,200 ,16,FColor(255, 0, 0),false, -1, 0,5);
 		if (!isMoving)
 		{
-			M_CurrentCoverLocation = M_CoverGoalData-> CoverLocation;
-			if (M_AIController != nullptr)
-			{
-				if (UNavigationSystemV1* const NavigationSystem = UNavigationSystemV1::GetCurrent(GetWorld()))
-				{
-					UPathFollowingComponent* PFComponent = M_AIController->GetPathFollowingComponent();
-					FAIMoveRequest MoveReq;
-					MoveReq.SetAllowPartialPath(true);
-					MoveReq.SetAcceptanceRadius(50);
-					MoveReq.SetCanStrafe(true);
-					MoveReq.SetReachTestIncludesAgentRadius(true);
-					MoveReq.SetReachTestIncludesGoalRadius(true);
-					MoveReq.SetUsePathfinding(true);
-					MoveReq.SetGoalLocation(M_CurrentCoverLocation);
-
-					const FPathFollowingRequestResult RequestResult = M_AIController->MoveTo(MoveReq);
-					switch (RequestResult.Code)
-					{
-					case EPathFollowingRequestResult::Failed:
-						M_BehaviourState = BehaviourExecutionState::FAILED;
-						break;
-
-					case EPathFollowingRequestResult::AlreadyAtGoal:
-						OnMoveRequestFinished(RequestResult.MoveId, FPathFollowingResult(EPathFollowingResult::Success, FPathFollowingResultFlags::AlreadyAtGoal));
-						break;
-
-					case EPathFollowingRequestResult::RequestSuccessful:
-						{
-							PathFinishDelegateHandle = PFComponent->OnRequestFinished.AddUObject(this, &UCoverBehaviour::OnMoveRequestFinished);
-							if (UCoverReservationSystem* CoverReservationSystem = GetWorld()->GetGameInstance()->GetSubsystem<UCoverReservationSystem>())
-							{
-								CoverReservationSystem->ReserveCoverLocation(M_CurrentCoverLocation);
-							}
-							isMoving = true;
-							break;
-						}
-					default:
-						break;
-					}
-				}
-			}
+			SelectCoverAndStartMove();
 		}
 		break;
 	case Crouching :
@@ -165,7 +171,7 @@ void UCoverBehaviour::CleanUpPathFollowingDelegate()
 
 void UCoverBehaviour::BehaviourExit_Implementation()
 {
-	if (UCoverReservationSystem* CoverReservationSystem = GetWorld()->GetGameInstance()->GetSubsystem<UCoverReservationSystem>())
+	if (UEQSReservationSystem* CoverReservationSystem = GetWorld()->GetGameInstance()->GetSubsystem<UEQSReservationSystem>())
 	{
 		CoverReservationSystem->UnReserveCoverLocation(M_CurrentCoverLocation);
 	}

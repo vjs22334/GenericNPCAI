@@ -6,6 +6,9 @@
 #include "AIController.h"
 #include "Blueprint/AIBlueprintHelperLibrary.h"
 #include "Character/ShooterBaseCharacter.h"
+#include "EnvironmentQuery/EnvQueryManager.h"
+#include "Global/EQSReservationSystem.h"
+#include "UtilityAI/GoalGenerators/DefenseGoalGenerator.h"
 
 void URepositionBehaviour::BehaviourEnter_Implementation(UBaseGoalData* GoalData)
 {
@@ -41,6 +44,12 @@ void URepositionBehaviour::BehaviourExit_Implementation()
 		M_AIController->StopMovement();
 		M_AIController->K2_ClearFocus();
 	}
+	UEQSReservationSystem* eQSReservationSystem = GetWorld()->GetGameInstance()->GetSubsystem<UEQSReservationSystem>();
+	if (eQSReservationSystem != nullptr)
+	{
+		eQSReservationSystem->UnReserveFiringLocation(M_LocationToMoveTo);
+	}
+	M_GoalOwner->TargetToAttack = nullptr;
 	M_GoalData = nullptr;
 	M_AIController = nullptr;
 	Super::BehaviourExit_Implementation();
@@ -113,6 +122,61 @@ bool URepositionBehaviour::IsAmmoInClip()
 	return false;
 }
 
+void URepositionBehaviour::HandleQueryResult(TSharedPtr<FEnvQueryResult> EnvQueryResult)
+{
+	if (EnvQueryResult->FEnvQueryResult::IsSuccessful())
+	{
+		int AcceptanceRadius = 100;
+		M_LocationToMoveTo = EnvQueryResult->GetItemAsLocation(0);
+		if (M_AIController)
+		{
+			M_AIController->K2_ClearFocus();
+			UPathFollowingComponent* PFComponent = M_AIController->GetPathFollowingComponent();
+			FAIMoveRequest MoveReq;
+			MoveReq.SetAllowPartialPath(true);
+			MoveReq.SetAcceptanceRadius(AcceptanceRadius);
+			MoveReq.SetCanStrafe(true);
+			MoveReq.SetReachTestIncludesAgentRadius(true);
+			MoveReq.SetReachTestIncludesGoalRadius(true);
+			MoveReq.SetUsePathfinding(true);
+			MoveReq.SetGoalLocation(M_LocationToMoveTo);
+		
+			const FPathFollowingRequestResult RequestResult = M_AIController->MoveTo(MoveReq);
+			switch (RequestResult.Code)
+			{
+			case EPathFollowingRequestResult::Failed:
+				M_SelectedTargetActor = nullptr;
+				M_IsMoving = false;
+				break;
+
+			case EPathFollowingRequestResult::AlreadyAtGoal:
+				OnMoveRequestFinished(RequestResult.MoveId, FPathFollowingResult(EPathFollowingResult::Success, FPathFollowingResultFlags::AlreadyAtGoal));
+				M_IsMoving = false;
+				break;
+
+			case EPathFollowingRequestResult::RequestSuccessful:
+				{
+					PathFinishDelegateHandle = PFComponent->OnRequestFinished.AddUObject(this, &URepositionBehaviour::OnMoveRequestFinished);
+					UEQSReservationSystem* eQSReservationSystem = GetWorld()->GetGameInstance()->GetSubsystem<UEQSReservationSystem>();
+					if (eQSReservationSystem != nullptr)
+					{
+						eQSReservationSystem->ReserveFiringLocation(M_LocationToMoveTo);
+					}
+					M_IsMoving = true;
+					break;
+				}
+			default:
+				break;
+			}
+		}
+	}
+	else
+	{
+		M_IsMoving = false;
+		M_BehaviourState = BehaviourExecutionState::FAILED;
+	}
+}
+
 float URepositionBehaviour::GetSelectionScore_Implementation(UBaseGoalData* GoalData)
 {
 	return 10;
@@ -158,43 +222,10 @@ void URepositionBehaviour::CleanUpPathFollowingDelegate()
 
 void URepositionBehaviour::MoveToFiringPosition()
 {
-	int AcceptanceRadius = 100;
-
-	if (M_AIController)
-	{
-		M_AIController->K2_ClearFocus();
-		
-		UPathFollowingComponent* PFComponent = M_AIController->GetPathFollowingComponent();
-		FAIMoveRequest MoveReq;
-		MoveReq.SetAllowPartialPath(true);
-		MoveReq.SetAcceptanceRadius(AcceptanceRadius);
-		MoveReq.SetCanStrafe(true);
-		MoveReq.SetReachTestIncludesAgentRadius(true);
-		MoveReq.SetReachTestIncludesGoalRadius(true);
-		MoveReq.SetUsePathfinding(true);
-		MoveReq.SetGoalActor(M_SelectedTargetActor);
-		
-		const FPathFollowingRequestResult RequestResult = M_AIController->MoveTo(MoveReq);
-		switch (RequestResult.Code)
-		{
-		case EPathFollowingRequestResult::Failed:
-			M_SelectedTargetActor = nullptr;
-			break;
-
-		case EPathFollowingRequestResult::AlreadyAtGoal:
-			OnMoveRequestFinished(RequestResult.MoveId, FPathFollowingResult(EPathFollowingResult::Success, FPathFollowingResultFlags::AlreadyAtGoal));
-			break;
-
-		case EPathFollowingRequestResult::RequestSuccessful:
-			{
-				PathFinishDelegateHandle = PFComponent->OnRequestFinished.AddUObject(this, &URepositionBehaviour::OnMoveRequestFinished);
-				M_IsMoving = true;
-				break;
-			}
-		default:
-			break;
-		}
-	}
+	M_IsMoving = true;
+	M_GoalOwner->TargetToAttack = M_SelectedTargetActor;
+	FEnvQueryRequest FiringSpotQueryRequest = FEnvQueryRequest(FindFiringSpotEQS, M_GoalOwner);
+	FiringSpotQueryRequest.Execute(EEnvQueryRunMode:: SingleResult, this,&URepositionBehaviour::HandleQueryResult);
 }
 
 void URepositionBehaviour::RefreshTargetLists(UCombatGoalData* GoalData)

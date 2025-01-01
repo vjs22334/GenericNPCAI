@@ -18,6 +18,7 @@ class AIPLAYGROUND_API UCoverBehaviour : public UBaseBehaviour
 	GENERATED_BODY()
 public:
 	virtual void BehaviourEnter_Implementation(UBaseGoalData* GoalData) override;
+	void SelectCoverAndStartMove();
 	virtual void BehaviourExit_Implementation() override;
 	virtual void BehaviourTick_Implementation(float DeltaTime) override;
 	virtual bool CheckPreConditions_Implementation(UBaseGoalData* GoalData) override;
