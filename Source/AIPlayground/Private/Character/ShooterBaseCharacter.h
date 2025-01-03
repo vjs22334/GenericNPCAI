@@ -32,6 +32,9 @@ protected:
 public:
 	UPROPERTY(BlueprintReadWrite)
 	AActor* TargetToAttack = nullptr;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool InCover = false;
 	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

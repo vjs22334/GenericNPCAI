@@ -98,10 +98,16 @@ void UCoverBehaviour::BehaviourTick_Implementation(float DeltaTime)
 		}
 		break;
 	case Crouching :
+		M_ShooterBaseGoalOwner->InCover = true;
 		if (M_TimeElapsedSinceCrouchStart > MaxCrouchTime)
 		{
 			M_BehaviourInterruptibilityState = BehaviourInterruptibilityState::INTERRUPTIBLE;
 			M_BehaviourState = BehaviourExecutionState::COMPLETED;
+		}
+		if(M_ShooterBaseGoalOwner->GetPercentAmmoLeftInClip() < 100 && !M_isReloading)
+		{
+			M_isReloading = true;
+			M_ShooterBaseGoalOwner->ReloadWeapon();
 		}
 		M_TimeElapsedSinceCrouchStart += DeltaTime;
 		break;
@@ -179,9 +185,10 @@ void UCoverBehaviour::BehaviourExit_Implementation()
 	{
 		M_AIController->StopMovement();
 	}
-	if (ACharacter* OwnerActor = Cast<ACharacter>(GoalOwner))
+	if (M_ShooterBaseGoalOwner != nullptr)
 	{
-		OwnerActor->UnCrouch();
+		M_ShooterBaseGoalOwner->UnCrouch();
+		M_ShooterBaseGoalOwner->InCover = false;
 	}
 }
 

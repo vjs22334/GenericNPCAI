@@ -54,5 +54,7 @@ private:
 		Crouching
 	};
 	CoverBehaviourState CurrentState = Moving;
+
+	bool M_isReloading = false;
 };
 
