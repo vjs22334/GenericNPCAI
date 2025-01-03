@@ -105,8 +105,42 @@ void UDetectionSystem::UnregisterDetectionComponent(class UDetectionComponent* D
 	if (TArray<UDetectionComponent*>* DetectionComponents = m_DetectionMap.Find(Team))
 	{
 		DetectionComponents->Remove(DetectionComponent);
+		TArray<AActor*> AllVisibleEnemy = DetectionComponent->GetAllVisibleActorsNotOfTeam(Team);
+		
+		for (int i = 0; i<AllVisibleEnemy.Num(); i++)
+		{
+			SetEnemyLastLocation(AllVisibleEnemy[i], AllVisibleEnemy[i]->GetActorLocation(),Team );
+		}
+	}
+	
+	
+}
+
+void UDetectionSystem::SetEnemyLastLocation(AActor* Enemy, FVector EnemyLocation, int32 team)
+{
+	TArray<AActor*> AllEnemyTeamVisible = GetAllTeamVisibleActorsNotOfTeam(team,team);
+	
+	if (!AllEnemyTeamVisible.Contains(Enemy))
+	{
+		m_EnemyLastLocationMap.FindOrAdd(Enemy) = EnemyLocation;
 	}
 }
+
+FVector UDetectionSystem::GetEnemyLastLocation(int32 team)
+{
+	TArray<AActor*> AllEnemyTeamVisible = GetAllTeamVisibleActorsNotOfTeam(team,team);
+	int EnemyIndex = FMath::RandRange(0, AllEnemyTeamVisible.Num()-1);
+	AActor* Enemy = AllEnemyTeamVisible[EnemyIndex];
+
+	if (m_EnemyLastLocationMap.Contains(Enemy))
+	{
+		return m_EnemyLastLocationMap[Enemy];
+	}
+	
+	return FVector::ZeroVector;
+}
+
+
 
 UDetectionComponent::UDetectionComponent()
 {
@@ -238,11 +272,10 @@ void UDetectionComponent::PerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
 			else
 			{
 				m_VisibleActors.Remove(Actor);
+				m_DetectionSystem->SetEnemyLastLocation(Actor, Actor->GetActorLocation(), MyTeam);
 			}
 		}
 	}
 }
-
-
 
 

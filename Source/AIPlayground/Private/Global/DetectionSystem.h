@@ -32,10 +32,16 @@ public:
 
 	void RegisterDetectionComponent(class UDetectionComponent* DetectionComponent);
 	void UnregisterDetectionComponent(class UDetectionComponent* DetectionComponent);
+	UFUNCTION(BlueprintCallable)
+	FVector GetEnemyLastLocation(int32 team);
+
+	UFUNCTION(BlueprintCallable)
+	void SetEnemyLastLocation(AActor* Enemy, FVector EnemyLocation, int32 team);
 
 private:
 	TMap<int32, TArray<UDetectionComponent*>> m_DetectionMap;
-
+	UPROPERTY()
+	TMap<AActor*, FVector> m_EnemyLastLocationMap;
 	
 };
 
