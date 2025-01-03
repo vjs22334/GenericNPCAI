@@ -26,6 +26,8 @@ public:
 	virtual bool CheckPreConditions_Implementation(UBaseGoalData* GoalData) override;
 	virtual float GetSelectionScore_Implementation(UBaseGoalData* GoalData) override;
 	virtual void Initialize_Implementation(AActor* OwnerActor, UBehaviourSelectorComponent* owner) override;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FVector AimOffset = FVector(0, 0, 0);
 
 
 private:

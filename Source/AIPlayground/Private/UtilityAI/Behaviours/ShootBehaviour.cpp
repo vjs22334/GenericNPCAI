@@ -52,7 +52,7 @@ void UShootBehaviour::ShootTarget()
 {
 	if (AShooterBaseCharacter* targetCharacter = Cast<AShooterBaseCharacter>(M_SelectedTargetActor))
 	{
-		M_AIController->SetFocalPoint(targetCharacter->GetMesh()->GetSocketLocation("spine_01"));
+		M_AIController->SetFocalPoint(targetCharacter->GetMesh()->GetBoneLocation("spine_01") + AimOffset);
 	}
 	else
 	{
@@ -73,14 +73,14 @@ bool UShootBehaviour::ChecKWeaponLos(AActor* TargetActor)
 	}
 	
 	bool hit = GetWorld()->LineTraceSingleByChannel(OutHit, startLocation, endLocation,ECC_Visibility,FCollisionQueryParams(FName("LOSTrace"),false,M_GoalOwner));
-	DrawDebugLine(
-			GetWorld(),
-			startLocation,
-			endLocation,
-			FColor(255, 0, 0),
-			false, -1, 0,
-			5
-		);
+	// DrawDebugLine(
+	// 		GetWorld(),
+	// 		startLocation,
+	// 		endLocation,
+	// 		FColor(255, 0, 0),
+	// 		false, -1, 0,
+	// 		5
+	//	);
 	if (!hit || (IsValid(OutHit.GetActor()) && (OutHit.GetActor()->IsOwnedBy(TargetActor) || OutHit.GetActor()->IsOwnedBy(M_GoalOwner))))
 	{
 		return true;
