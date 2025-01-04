@@ -13,14 +13,14 @@ void UUEnvQueryGenerator_GridCustom::GenerateItems(FEnvQueryInstance& QueryInsta
 	SpaceBetween.BindData(BindOwner, QueryInstance.QueryID);
 
 	float LengthValue = GridSizeX.GetValue();
-	float WidthValue = GridSizeX.GetValue();
+	float WidthValue = GridSizeY.GetValue();
 	float DensityValue = SpaceBetween.GetValue();
 
 	const int32 ItemCountX = FPlatformMath::TruncToInt((LengthValue * 2.0f / DensityValue) + 1);
 	const int32 ItemCountHalfX = ItemCountX / 2;
 
 	const int32 ItemCountY = FPlatformMath::TruncToInt((WidthValue * 2.0f / DensityValue) + 1);
-	const int32 ItemCountHalfY = ItemCountX / 2;
+	const int32 ItemCountHalfY = ItemCountY / 2;
 
 	TArray<FVector> ContextLocations;
 	QueryInstance.PrepareContext(GenerateAround, ContextLocations);

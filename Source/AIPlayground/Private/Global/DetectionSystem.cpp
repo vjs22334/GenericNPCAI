@@ -167,15 +167,16 @@ void UDetectionComponent::BeginPlay()
 			if (PerceptionComponent)
 			{
 				PerceptionComponent->OnTargetPerceptionUpdated.AddDynamic(this, &UDetectionComponent::PerceptionUpdated);
+			}
 
-				if (UWorld* World = GetWorld())
-				{
-					m_DetectionSystem = World->GetGameInstance()->GetSubsystem<UDetectionSystem>();
-					if (m_DetectionSystem != nullptr)
-					{
-						m_DetectionSystem->RegisterDetectionComponent(this);
-					}
-				}
+		}
+
+		if (UWorld* World = GetWorld())
+		{
+			m_DetectionSystem = World->GetGameInstance()->GetSubsystem<UDetectionSystem>();
+			if (m_DetectionSystem != nullptr)
+			{
+				m_DetectionSystem->RegisterDetectionComponent(this);
 			}
 		}
 	}

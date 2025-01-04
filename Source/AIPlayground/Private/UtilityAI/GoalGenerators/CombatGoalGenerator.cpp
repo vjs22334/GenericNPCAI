@@ -39,18 +39,23 @@ void UCombatGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner, float 
 		}
 		if (selfVisibleActors.Num() == 0 && teamVisibleActors.Num() == 0)
 		{
-			// stopped seeing a target player
+			// stopped seeing target players
 			if (M_CombatGoalData!=nullptr)
 			{
 				M_CombatGoalData->SelfTargets.Empty();
 				M_CombatGoalData->TeamTargets.Empty();//let the behaviour know the target is lost
 				M_GoalGeneratorComponent->RemoveGoal(M_CombatGoalData);
 				M_CombatGoalData = nullptr;
-				UDetectionSystem* detectionSystem = goalOwner->GetWorld()->GetGameInstance()->GetSubsystem<UDetectionSystem>();
-				USearchGoalData* SearchGoalData = NewObject<USearchGoalData>(this);
-				M_GoalGeneratorComponent->AddGoal(M_SearchGoalData);
-				SearchGoalData->MoveToLocation = detectionSystem->GetEnemyLastLocation(M_DetectionComponent->MyTeam);
+				
 			}
+
+			if (M_SearchGoalData == nullptr)
+			{
+				M_SearchGoalData = NewObject<USearchGoalData>(this);
+				M_GoalGeneratorComponent->AddGoal(M_SearchGoalData);
+			}
+			UDetectionSystem* detectionSystem = goalOwner->GetWorld()->GetGameInstance()->GetSubsystem<UDetectionSystem>();
+			M_SearchGoalData->MoveToLocation = detectionSystem->GetEnemyLastLocation(M_DetectionComponent->MyTeam);
 		}
 		else
 		{

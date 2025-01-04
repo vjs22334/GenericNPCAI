@@ -104,10 +104,10 @@ void UCoverBehaviour::BehaviourTick_Implementation(float DeltaTime)
 			M_BehaviourInterruptibilityState = BehaviourInterruptibilityState::INTERRUPTIBLE;
 			M_BehaviourState = BehaviourExecutionState::COMPLETED;
 		}
-		if(M_ShooterBaseGoalOwner->GetPercentAmmoLeftInClip() < 100 && !M_isReloading)
+		if (IWeaponInterface::Execute_GetPercentAmmoLeftInClip(M_ShooterBaseGoalOwner) < 100 && !M_isReloading)
 		{
 			M_isReloading = true;
-			M_ShooterBaseGoalOwner->ReloadWeapon();
+			IWeaponInterface::Execute_ReloadWeapon(M_ShooterBaseGoalOwner);
 		}
 		M_TimeElapsedSinceCrouchStart += DeltaTime;
 		break;
