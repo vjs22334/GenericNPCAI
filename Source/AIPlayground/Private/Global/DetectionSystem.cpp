@@ -128,13 +128,16 @@ void UDetectionSystem::SetEnemyLastLocation(AActor* Enemy, FVector EnemyLocation
 
 FVector UDetectionSystem::GetEnemyLastLocation(int32 team)
 {
-	TArray<AActor*> AllEnemyTeamVisible = GetAllTeamVisibleActorsNotOfTeam(team,team);
-	int EnemyIndex = FMath::RandRange(0, AllEnemyTeamVisible.Num()-1);
-	AActor* Enemy = AllEnemyTeamVisible[EnemyIndex];
-
-	if (m_EnemyLastLocationMap.Contains(Enemy))
+	TArray<AActor*> AllEnemyTeam = GetAllActorsNotOfTeam(team);
+	if (AllEnemyTeam.Num() != 0)
 	{
-		return m_EnemyLastLocationMap[Enemy];
+		int EnemyIndex = FMath::RandRange(0, AllEnemyTeam.Num()-1);
+		AActor* Enemy = AllEnemyTeam[EnemyIndex];
+
+		if (m_EnemyLastLocationMap.Contains(Enemy))
+		{
+			return m_EnemyLastLocationMap[Enemy];
+		}
 	}
 	
 	return FVector::ZeroVector;

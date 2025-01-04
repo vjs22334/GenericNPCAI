@@ -23,7 +23,7 @@ public:
 	void SetupPerception(AActor* goalOwner);
 	virtual void EvaluateGoal_Implementation(AActor* goalOwner, float DeltaTime) override;
 	virtual void Initialize_Implementation(AActor* goalOwner, UGoalGeneratorComponent* owner) override;
-
+	
 private:
 	UPROPERTY()
 	AActor* M_GoalOwner = nullptr;

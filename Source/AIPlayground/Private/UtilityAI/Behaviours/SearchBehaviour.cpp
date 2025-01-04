@@ -22,7 +22,7 @@ void USearchBehaviour::BehaviourEnter_Implementation(UBaseGoalData* GoalData)
 		return;
 	}
 
-	SearchLocation = M_SearchGoalData->Location;
+	SearchLocation = M_SearchGoalData->MoveToLocation;
 	M_TimeElapsedSinceBehaviourStart = 0;
 
 	M_AIController = UAIBlueprintHelperLibrary::GetAIController(GoalOwner);

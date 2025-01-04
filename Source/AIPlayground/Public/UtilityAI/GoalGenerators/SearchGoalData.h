@@ -15,5 +15,5 @@ class AIPLAYGROUND_API USearchGoalData : public UBaseGoalData
 	GENERATED_BODY()
 public:
 	UPROPERTY()
-	FVector Location;
+	FVector MoveToLocation;
 };

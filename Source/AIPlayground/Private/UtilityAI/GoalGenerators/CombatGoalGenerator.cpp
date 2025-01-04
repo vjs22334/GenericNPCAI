@@ -10,6 +10,7 @@
 
 #include "UtilityAI/GoalGenerators/CombatGoalData.h"
 #include "UtilityAI/GoalGenerators/GoalGeneratorComponent.h"
+#include "UtilityAI/GoalGenerators/SearchGoalData.h"
 
 
 void UCombatGoalGenerator::SetupPerception(AActor* goalOwner)
@@ -45,15 +46,24 @@ void UCombatGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner, float 
 				M_CombatGoalData->TeamTargets.Empty();//let the behaviour know the target is lost
 				M_GoalGeneratorComponent->RemoveGoal(M_CombatGoalData);
 				M_CombatGoalData = nullptr;
+				UDetectionSystem* detectionSystem = goalOwner->GetWorld()->GetGameInstance()->GetSubsystem<UDetectionSystem>();
+				USearchGoalData* SearchGoalData = NewObject<USearchGoalData>(this);
+				M_GoalGeneratorComponent->AddGoal(M_SearchGoalData);
+				SearchGoalData->MoveToLocation = detectionSystem->GetEnemyLastLocation(M_DetectionComponent->MyTeam);
 			}
 		}
 		else
 		{
+			if (M_SearchGoalData != nullptr)
+			{
+				M_GoalGeneratorComponent->RemoveGoal(M_SearchGoalData);
+				M_SearchGoalData = nullptr;
+			}
+				
 			if (M_CombatGoalData == nullptr)
 			{
 				// create and push combat goal
 				M_CombatGoalData = NewObject<UCombatGoalData>(this);
-
 				M_GoalGeneratorComponent->AddGoal(M_CombatGoalData);
 				
 			}
@@ -71,7 +81,6 @@ void UCombatGoalGenerator::EvaluateGoal_Implementation(AActor* goalOwner, float 
 				M_CombatTargetActor = teamVisibleActors[0];
 			}
 		}
-		
 	}
 
 	
