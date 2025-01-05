@@ -28,5 +28,4 @@ public:
 	float WeaponBulletRange = 150;
 	UPROPERTY(BlueprintReadOnly , EditAnywhere)
 	USkeletalMesh* WeaponMesh;
-	
 };

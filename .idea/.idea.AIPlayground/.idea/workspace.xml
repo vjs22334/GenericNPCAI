@@ -8,37 +8,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9c02080-df8e-421c-82ed-1fd1fe64a053" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Meshes/Sniper/SniperRifle.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/Weapon/AssualtRifleProperties_2.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/Weapon/SMGProperties.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/Weapon/SniperRifleProperties.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Cap/Balaklava.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Cap/Balaklava_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Cap/Balaklava_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Cap/Balaklava_OcclusionRoughnessMetallic.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Cap/M_Cap.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Helmat/DefaultMaterial_AS.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Helmat/DefaultMaterial_CO.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Helmat/DefaultMaterial_NOHQ.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Helmat/DefaultMaterial_SMDI.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Helmat/M_Helmet.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Helmat/MarineHelmet.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Skimask/Balaclava.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Skimask/M_Mask_1.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Skimask/M_Mask_2.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Skimask/Mask_BaseColor_Black.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Asset/Skimask/Mask_BaseColor_Gray.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/AiClasses/BP_AI_Assualt.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/AiClasses/BP_AI_Rifle.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/AiClasses/BP_AI_SMG.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/AiClasses/BP_AI_Sniper.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AIPlayground.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/AIPlayground.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AIPlayground.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/AIPlayground.uproject" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Materials/Accessories/M_Scope_25x56_Lens_NoAlpha.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Materials/Accessories/M_Scope_25x56_Lens_NoAlpha.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Materials/Ammunition/M_45ap.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Materials/Ammunition/M_45ap.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Materials/Ka47/M_KA47.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Materials/Ka47/M_KA47.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Materials/Master_Material/M_Scope_Lens_MASTER.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Materials/Master_Material/M_Scope_Lens_MASTER.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Materials/Master_Material/M_Weapon_Master_USE.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Materials/Master_Material/M_Weapon_Master_USE.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Meshes/Ka47/SM_KA47.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Meshes/Ka47/SM_KA47.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Textures/KA47/T_KA47_ALB.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Textures/KA47/T_KA47_ALB.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/BP_UtilityAIAIController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/BP_UtilityAIAIController.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/Behaviours/BP_ShootBehaviour.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/Behaviours/BP_ShootBehaviour.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Materials/G67_Grenade/M_G67.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Materials/G67_Grenade/M_G67.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Meshes/Sniper/sniperv1_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPS_Weapon_Bundle/Weapons/Meshes/Sniper/sniperv1_Skeleton.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/Behaviours/BP_CoverBehavior.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/Behaviours/BP_CoverBehavior.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/MyContent/Animation/ABP_ShooterBaseCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Animation/ABP_ShooterBaseCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Animation/Anims/Fire_Rifle_Ironsights.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Animation/Anims/Fire_Rifle_Ironsights.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Animation/Character/Mannequins/Animations/ABP_Quinn.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Animation/Character/Mannequins/Animations/ABP_Quinn.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/MyContent/Animation/Character/Mannequins/Meshes/SK_Mannequin.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Animation/Character/Mannequins/Meshes/SK_Mannequin.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/A_Cover.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/A_Cover.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_DummyAI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_DummyAI.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Projectile.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Projectile.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Shooter_AI_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Shooter_AI_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Shooter_Player_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Shooter_Player_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Template_ShooterBaseCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Template_ShooterBaseCharacter.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/Weapon/AssualtRifleProperties.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/Weapon/AssualtRifleProperties.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/Weapon/BP_Weapon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/Weapon/BP_Weapon.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/Widget/WB_BehaviourDebug.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/Widget/WB_BehaviourDebug.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Cover.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Cover.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/Weapon/SMGProperties.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/Weapon/SMGProperties.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/Weapon/SniperRifleProperties.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/Weapon/SniperRifleProperties.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Reposition.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Reposition.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/MyContent/Maps/GYM.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Maps/GYM.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/MyContent/Maps/Playground.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Maps/Playground.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intermediate/CachedAssetRegistry.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/CachedAssetRegistry.bin" afterDir="false" />
@@ -48,7 +54,7 @@
       <change beforePath="$PROJECT_DIR$/Saved/Config/WindowsEditor/Engine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/WindowsEditor/Engine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/WindowsEditor/Niagara.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/WindowsEditor/Niagara.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Logs/AIPlayground.log" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Logs/AIPlayground.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/PatrolBehaviour.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/PatrolBehaviour.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Private/Character/WeaponProperties.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/Character/WeaponProperties.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,8 +162,7 @@
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://6" root0="FORCE_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://7" root0="FORCE_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://12" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files (x86)/UE_5.1/Engine/Source/Runtime/Core/Public/Containers/Array.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files (x86)/UE_5.1/Engine/Source/Runtime/Core/Public/Math/Vector.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files (x86)/UE_5.1/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectHandle.h" root0="FORCE_HIGHLIGHTING" />
@@ -251,7 +256,7 @@
       <workItem from="1735918306405" duration="7333000" />
       <workItem from="1735962640499" duration="11166000" />
       <workItem from="1736017556447" duration="1509000" />
-      <workItem from="1736063058098" duration="6484000" />
+      <workItem from="1736063058098" duration="11003000" />
     </task>
     <servers />
   </component>
@@ -259,17 +264,6 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/CoverBehaviour.cpp</url>
-          <line>123</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
