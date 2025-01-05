@@ -29,7 +29,7 @@ void UPatrolBehaviour::BehaviourEnter_Implementation(UBaseGoalData* GoalData)
 			UPathFollowingComponent* PFComponent = M_AIController->GetPathFollowingComponent();
 			FAIMoveRequest MoveReq;
 			MoveReq.SetAllowPartialPath(true);
-			MoveReq.SetAcceptanceRadius(250);
+			MoveReq.SetAcceptanceRadius(50);
 			MoveReq.SetCanStrafe(true);
 			MoveReq.SetReachTestIncludesAgentRadius(true);
 			MoveReq.SetReachTestIncludesGoalRadius(true);
@@ -95,7 +95,7 @@ void UPatrolBehaviour::BehaviourExit_Implementation()
 
 void UPatrolBehaviour::BehaviourTick_Implementation(float DeltaTime)
 {
-	Super::BehaviourTick_Implementation(DeltaTime);
+	DrawDebugSphere(GetWorld(),M_LastKnownLocation,200 ,16,FColor(255, 0, 0),false, -1, 0,5);
 }
 
 bool UPatrolBehaviour::CheckPreConditions_Implementation(UBaseGoalData* GoalData)
