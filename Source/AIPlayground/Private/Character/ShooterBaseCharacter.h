@@ -35,6 +35,12 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	bool InCover = false;
+
+	UPROPERTY(BlueprintReadOnly)
+	bool IsDead = false;
+	
+	UPROPERTY(EditAnywhere)
+	UAnimMontage* DeathMontage;
 	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

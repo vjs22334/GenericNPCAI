@@ -9,10 +9,11 @@
 #include "BehaviourSelectorComponent.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class UBehaviourSelectorComponent : public UActorComponent
 {
 	GENERATED_BODY()
+
 private:
 	UPROPERTY()
 	UGoalGeneratorComponent* M_GoalGeneratorComponentRef;
@@ -41,6 +42,7 @@ public:
 	TArray<TSubclassOf<UBaseBehaviour>> M_PriorityBehaviourList;
 	// Sets default values for this component's properties
 	UBehaviourSelectorComponent();
+	virtual void DestroyComponent(bool bPromoteChildren = false) override;
 
 private:
 	void ChooseBehaviourToRun();
@@ -51,10 +53,11 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
+	                           FActorComponentTickFunction* ThisTickFunction) override;
+
 	UFUNCTION(BlueprintCallable)
 	FString GetCurrentBehaviourName();
 };

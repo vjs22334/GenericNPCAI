@@ -7,7 +7,9 @@
 #include "HealthComponent.h"
 #include "WeaponComponent.h"
 #include "Blueprint/AIBlueprintHelperLibrary.h"
+#include "Global/DetectionSystem.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "UtilityAI/Behaviours/BehaviourSelectorComponent.h"
 
 
 // Sets default values
@@ -32,9 +34,28 @@ void AShooterBaseCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (M_HealthComponent->GetIsDead())
+	if (M_HealthComponent->GetIsDead() && !IsDead)
 	{
-		Destroy();
+		IsDead = true;
+		if (DeathMontage != nullptr)
+		{
+			PlayAnimMontage(DeathMontage);
+		}
+		
+		SetLifeSpan(5);
+		
+		if (UDetectionComponent* DetectionComponent = Cast<UDetectionComponent>(GetComponentByClass(UDetectionComponent::StaticClass())))
+		{
+			DetectionComponent->DestroyComponent();
+		}
+		if (UBehaviourSelectorComponent* BehaviourSelectorComponent =  Cast<UBehaviourSelectorComponent>(GetComponentByClass(UBehaviourSelectorComponent::StaticClass())))
+		{
+			BehaviourSelectorComponent->DestroyComponent();
+		}
+		if (UGoalGeneratorComponent* GoalGeneratorComponent =  Cast<UGoalGeneratorComponent>(GetComponentByClass(UGoalGeneratorComponent::StaticClass())))
+		{
+			GoalGeneratorComponent->DestroyComponent();
+		}
 	}
 }
 

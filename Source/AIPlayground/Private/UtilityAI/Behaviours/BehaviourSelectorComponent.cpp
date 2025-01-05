@@ -13,6 +13,15 @@ UBehaviourSelectorComponent::UBehaviourSelectorComponent()
 	// ...
 }
 
+void UBehaviourSelectorComponent::DestroyComponent(bool bPromoteChildren)
+{
+	Super::DestroyComponent(bPromoteChildren);
+	if (M_CurrentBehaviour != nullptr)
+	{
+		M_CurrentBehaviour->BehaviourExit();
+	}
+}
+
 void UBehaviourSelectorComponent::ChooseBehaviourToRun()
 {
 	M_NextChosenBehaviour = nullptr;
