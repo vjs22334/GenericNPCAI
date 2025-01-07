@@ -29,6 +29,8 @@ void UBehaviourSelectorComponent::ChooseBehaviourToRun()
 	
 	float CurrentUtitlityScore = 0;
 
+	TArray<UBaseBehaviour*> AllowedBehaviours;
+	
 	for (UBaseBehaviour* priorityBehaviour : M_PriorityBehaviourRefs)
 	{
 		UBaseGoalData* goalData = TryAndGetGoalDataClass(priorityBehaviour->GoalDataClass);
@@ -37,13 +39,17 @@ void UBehaviourSelectorComponent::ChooseBehaviourToRun()
 			bool IsInCoolDown = M_CurrentBehaviourCoolDownMap.Contains(priorityBehaviour) && M_CurrentBehaviourCoolDownMap[priorityBehaviour] > priorityBehaviour->BehaviourCoolDown;
 			if (!IsInCoolDown)
 			{
-				if(priorityBehaviour->CheckPreConditions(goalData))
+				if (priorityBehaviour->CheckPreConditions(goalData))
 				{
-					if(priorityBehaviour->GetSelectionScore(goalData)>CurrentUtitlityScore)
+					if (priorityBehaviour->GetSelectionScore(goalData) > CurrentUtitlityScore)
 					{
+						AllowedBehaviours.Empty();
 						CurrentUtitlityScore = priorityBehaviour->GetSelectionScore(goalData);
-						M_NextChosenBehaviour = priorityBehaviour;
-						M_NextChosenBehaviourGoalData = goalData;
+						AllowedBehaviours.Add(priorityBehaviour);
+					}
+					else if (priorityBehaviour->GetSelectionScore(goalData) == CurrentUtitlityScore)
+					{
+						AllowedBehaviours.Add(priorityBehaviour);
 					}
 				}
 				
@@ -51,8 +57,21 @@ void UBehaviourSelectorComponent::ChooseBehaviourToRun()
 			
 		}
 	}
+
+	if (AllowedBehaviours.Num() > 0)
+	{
+		int i = FMath::RandRange(0, AllowedBehaviours.Num() - 1);
+		M_NextChosenBehaviour = AllowedBehaviours[i];
+		M_NextChosenBehaviourGoalData = TryAndGetGoalDataClass(M_NextChosenBehaviour->GoalDataClass);
+	}
+
+	if (M_NextChosenBehaviour != nullptr)
+	{
+		return;
+	}
 	
 	CurrentUtitlityScore = 0;
+	AllowedBehaviours.Empty();
 	for (UBaseBehaviour* behaviour : M_BehaviourRefs)
 	{
 		UBaseGoalData* goalData = TryAndGetGoalDataClass(behaviour->GoalDataClass);
@@ -63,16 +82,26 @@ void UBehaviourSelectorComponent::ChooseBehaviourToRun()
 			{
 				if(behaviour->CheckPreConditions(goalData))
 				{
-					
-					if(behaviour->GetSelectionScore(goalData)>CurrentUtitlityScore)
+					if (behaviour->GetSelectionScore(goalData) > CurrentUtitlityScore)
 					{
+						AllowedBehaviours.Empty();
 						CurrentUtitlityScore = behaviour->GetSelectionScore(goalData);
-						M_NextChosenBehaviour = behaviour;
-						M_NextChosenBehaviourGoalData = goalData;
+						AllowedBehaviours.Add(behaviour);
+					}
+					else if (behaviour->GetSelectionScore(goalData) == CurrentUtitlityScore)
+					{
+						AllowedBehaviours.Add(behaviour);
 					}
 				}
 			}
 		}
+	}
+
+	if (AllowedBehaviours.Num() > 0)
+	{
+		int i = FMath::RandRange(0, AllowedBehaviours.Num() - 1);
+		M_NextChosenBehaviour = AllowedBehaviours[i];
+		M_NextChosenBehaviourGoalData = TryAndGetGoalDataClass(M_NextChosenBehaviour->GoalDataClass);
 	}
 	
 	// iterate through behaviour list and cross check with goal data to create runnable behaviours list
@@ -80,6 +109,7 @@ void UBehaviourSelectorComponent::ChooseBehaviourToRun()
 	// set behaviour with highest utility score as behaviour to run
 	
 }
+
 
 void UBehaviourSelectorComponent::SwitchToNewBehaviour()
 {
