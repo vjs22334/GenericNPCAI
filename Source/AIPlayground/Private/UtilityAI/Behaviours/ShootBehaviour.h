@@ -51,8 +51,8 @@ private:
 	void ShootTarget();
 	UPROPERTY()
 	FVector M_LocationToStrafeTo = FVector::ZeroVector;
-	int M_TimeElapsedSinceShootStart = 0;
-	int M_StrafeDelay;
+	float M_TimeElapsedSinceShootStart = 0;
+	float M_StrafeDelay;
 
 
 	UPROPERTY()
