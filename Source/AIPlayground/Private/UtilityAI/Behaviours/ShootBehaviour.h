@@ -6,11 +6,13 @@
 #include "AIController.h"
 #include "AITypes.h"
 #include "Character/ShooterBaseCharacter.h"
+#include "EnvironmentQuery/EnvQuery.h"
 #include "Navigation/PathFollowingComponent.h"
 #include "UtilityAI/Behaviours/BaseBehaviour.h"
 #include "UtilityAI/GoalGenerators/CombatGoalData.h"
 #include "ShootBehaviour.generated.h"
 
+struct FEnvQueryResult;
 /**
  * 
  */
@@ -28,6 +30,10 @@ public:
 	virtual void Initialize_Implementation(AActor* OwnerActor, UBehaviourSelectorComponent* owner) override;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FVector AimOffset = FVector(0, 0, 0);
+	UPROPERTY(EditAnywhere, Category = "AI")
+	UEnvQuery *StrafeEQS;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float M_StrafeTimer = 3;
 
 
 private:
@@ -36,10 +42,14 @@ private:
 	bool CheckWithinWeaponRange(AActor* TargetActor);
 	void RefreshTargetLists(UCombatGoalData* GoalData);
 	void CleanUpPathFollowingDelegate();
-	void MoveToFiringPosition();
+	void HandleQueryResult(TSharedPtr<FEnvQueryResult> EnvQueryResult);
+	void RunStrafeEQS();
 	void FireWeapon();
 	bool IsAmmoInClip();
 	void ShootTarget();
+	UPROPERTY()
+	FVector M_LocationToStrafeTo = FVector::ZeroVector;
+	float M_TimeElapsedSinceShootStart = 0;
 
 
 

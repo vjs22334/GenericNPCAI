@@ -117,23 +117,25 @@ void UCoverBehaviour::BehaviourTick_Implementation(float DeltaTime)
 bool UCoverBehaviour::CheckPreConditions_Implementation(UBaseGoalData* GoalData)
 {
 	UCoverGoalData* CoverGoalData = Cast<UCoverGoalData>(GoalData);
-	if (AShooterBaseCharacter* shooterBaseCharacter = dynamic_cast<AShooterBaseCharacter*>(GoalOwner))
+	if (CoverGoalData != nullptr && CoverGoalData->CoverLocation != FVector::ZeroVector)
 	{
-		if (IHealthSystemInterface::Execute_GetIsTakingDamage(shooterBaseCharacter))
-		{
-			if (CoverGoalData != nullptr && CoverGoalData->CoverLocation != FVector::ZeroVector)
-			{
-				return true;
-			}
-		}
+		return true;
 	}
+	
 	return false;
 	
 }
 
 float UCoverBehaviour::GetSelectionScore_Implementation(UBaseGoalData* GoalData)
 {
-	return 30;
+	if (AShooterBaseCharacter* shooterBaseCharacter = dynamic_cast<AShooterBaseCharacter*>(GoalOwner))
+	{
+		if (IHealthSystemInterface::Execute_GetIsTakingDamage(shooterBaseCharacter))
+		{
+			return 30;
+		}
+	}
+	return 25;
 }
 
 void UCoverBehaviour::Initialize_Implementation(AActor* OwnerActor, UBehaviourSelectorComponent* owner)

@@ -8,6 +8,7 @@
 #include "Character/ShooterBaseCharacter.h"
 #include "Character/weaponInterface.h"
 #include "UtilityAI/GoalGenerators/CombatGoalData.h"
+#include "EnvironmentQuery/EnvQueryManager.h"
 
 void UShootBehaviour::BehaviourEnter_Implementation(UBaseGoalData* GoalData)
 {
@@ -161,10 +162,16 @@ void UShootBehaviour::BehaviourTick_Implementation(float DeltaTime)
 		{
 			ShootTarget();
 		}
-		// else if (!M_IsMovingToFiringPosition)
-		// {
-		// 	MoveToFiringPosition();
-		// }
+
+		if (M_TimeElapsedSinceShootStart > M_StrafeTimer)
+		{
+			RunStrafeEQS();
+		}
+		else
+		{
+			M_TimeElapsedSinceShootStart += DeltaTime;
+		}
+		
 	}
 }
 
@@ -237,6 +244,7 @@ void UShootBehaviour::CleanUpPathFollowingDelegate()
 	}
 }
 
+
 void UShootBehaviour::OnMoveRequestFinished(FAIRequestID RequestID, const FPathFollowingResult& Result)
 {
 	//Do we need to do anything on success or failure here?
@@ -251,47 +259,60 @@ void UShootBehaviour::OnMoveRequestFinished(FAIRequestID RequestID, const FPathF
 	CleanUpPathFollowingDelegate();
 }
 
-void UShootBehaviour::MoveToFiringPosition()
+void UShootBehaviour::RunStrafeEQS()
 {
 	M_IsMovingToFiringPosition = true;
-	int AcceptanceRadius = 100;
+	M_GoalOwner->TargetToAttack = M_SelectedTargetActor;
+	M_AIController->SetFocus(M_SelectedTargetActor);
 
-	if (M_AIController)
+	FEnvQueryRequest StrafeSpotQueryRequest = FEnvQueryRequest(StrafeEQS, M_GoalOwner);
+	StrafeSpotQueryRequest.Execute(EEnvQueryRunMode:: RandomBest25Pct, this,&UShootBehaviour::HandleQueryResult);
+	
+}
+
+void UShootBehaviour::HandleQueryResult(TSharedPtr<FEnvQueryResult> EnvQueryResult)
+{
+	if (EnvQueryResult->FEnvQueryResult::IsSuccessful())
 	{
-		M_CanShoot = false;
-		M_AIController->K2_ClearFocus();
-		
-		UPathFollowingComponent* PFComponent = M_AIController->GetPathFollowingComponent();
-		FAIMoveRequest MoveReq;
-		MoveReq.SetAllowPartialPath(true);
-		MoveReq.SetAcceptanceRadius(AcceptanceRadius);
-		MoveReq.SetCanStrafe(true);
-		MoveReq.SetReachTestIncludesAgentRadius(true);
-		MoveReq.SetReachTestIncludesGoalRadius(true);
-		MoveReq.SetUsePathfinding(true);
-		MoveReq.SetGoalActor(M_SelectedTargetActor);
-		
-		const FPathFollowingRequestResult RequestResult = M_AIController->MoveTo(MoveReq);
-		switch (RequestResult.Code)
+		M_LocationToStrafeTo = EnvQueryResult->GetItemAsLocation(0);
+		DrawDebugSphere(GetWorld(),M_LocationToStrafeTo,50,16,FColor(0, 0, 225),false, -1, 0,5);
+		if (M_AIController)
 		{
-		case EPathFollowingRequestResult::Failed:
-			M_IsMovingToFiringPosition = false;
-			M_SelectedTargetActor = nullptr;
-			break;
-
-		case EPathFollowingRequestResult::AlreadyAtGoal:
-			OnMoveRequestFinished(RequestResult.MoveId, FPathFollowingResult(EPathFollowingResult::Success, FPathFollowingResultFlags::AlreadyAtGoal));
-			break;
-
-		case EPathFollowingRequestResult::RequestSuccessful:
+			M_CanShoot = false;
+			
+			UPathFollowingComponent* PFComponent = M_AIController->GetPathFollowingComponent();
+			FAIMoveRequest MoveReq;
+			MoveReq.SetAllowPartialPath(true);
+			MoveReq.SetAcceptanceRadius(20);
+			MoveReq.SetCanStrafe(true);
+			MoveReq.SetReachTestIncludesAgentRadius(true);
+			MoveReq.SetReachTestIncludesGoalRadius(true);
+			MoveReq.SetUsePathfinding(true);
+			MoveReq.SetGoalLocation(M_LocationToStrafeTo);
+		
+			const FPathFollowingRequestResult RequestResult = M_AIController->MoveTo(MoveReq);
+			switch (RequestResult.Code)
 			{
-				PathFinishDelegateHandle = PFComponent->OnRequestFinished.AddUObject(this, &UShootBehaviour::OnMoveRequestFinished);
+			case EPathFollowingRequestResult::Failed:
+				M_IsMovingToFiringPosition = false;
+				M_SelectedTargetActor = nullptr;
+				break;
+
+			case EPathFollowingRequestResult::AlreadyAtGoal:
+				OnMoveRequestFinished(RequestResult.MoveId, FPathFollowingResult(EPathFollowingResult::Success, FPathFollowingResultFlags::AlreadyAtGoal));
+				break;
+
+			case EPathFollowingRequestResult::RequestSuccessful:
+				{
+					PathFinishDelegateHandle = PFComponent->OnRequestFinished.AddUObject(this, &UShootBehaviour::OnMoveRequestFinished);
+					break;
+				}
+			default:
 				break;
 			}
-		default:
-			break;
 		}
 	}
+	M_TimeElapsedSinceShootStart = 0;
 }
 
 void UShootBehaviour::FireWeapon()
