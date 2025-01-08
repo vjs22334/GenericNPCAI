@@ -7,6 +7,7 @@
 #include "HealthComponent.h"
 #include "WeaponComponent.h"
 #include "Blueprint/AIBlueprintHelperLibrary.h"
+#include "Components/CapsuleComponent.h"
 #include "Global/DetectionSystem.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "UtilityAI/Behaviours/BehaviourSelectorComponent.h"
@@ -42,7 +43,14 @@ void AShooterBaseCharacter::Tick(float DeltaTime)
 			PlayAnimMontage(DeathMontage);
 		}
 		
-		SetLifeSpan(5);
+		SetLifeSpan(7);
+
+		if (UMeshComponent* MeshComponent = Cast<UMeshComponent>(GetComponentByClass(UMeshComponent::StaticClass())))
+		{
+			MeshComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		}
+		
+		GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Pawn,ECR_Ignore);
 		
 		if (UDetectionComponent* DetectionComponent = Cast<UDetectionComponent>(GetComponentByClass(UDetectionComponent::StaticClass())))
 		{

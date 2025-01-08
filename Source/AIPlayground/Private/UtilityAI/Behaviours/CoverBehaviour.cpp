@@ -134,8 +134,13 @@ float UCoverBehaviour::GetSelectionScore_Implementation(UBaseGoalData* GoalData)
 		{
 			return 30;
 		}
+		
+		if (IWeaponInterface::Execute_GetPercentAmmoLeftInClip(shooterBaseCharacter) < 50 )
+		{
+			return 15;
+		}
 	}
-	return 25;
+	return 4;
 }
 
 void UCoverBehaviour::Initialize_Implementation(AActor* OwnerActor, UBehaviourSelectorComponent* owner)
