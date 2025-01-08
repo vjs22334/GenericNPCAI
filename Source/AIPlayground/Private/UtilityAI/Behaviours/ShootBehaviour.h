@@ -33,7 +33,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "AI")
 	UEnvQuery *StrafeEQS;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float M_StrafeTimer = 3;
+	int MaxStrafeDelay = 5;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int MinStrafeDelay = 3;
 
 
 private:
@@ -49,8 +51,8 @@ private:
 	void ShootTarget();
 	UPROPERTY()
 	FVector M_LocationToStrafeTo = FVector::ZeroVector;
-	float M_TimeElapsedSinceShootStart = 0;
-
+	int M_TimeElapsedSinceShootStart = 0;
+	int M_StrafeDelay;
 
 
 	UPROPERTY()
