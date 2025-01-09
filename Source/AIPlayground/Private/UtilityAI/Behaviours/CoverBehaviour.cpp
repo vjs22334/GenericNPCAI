@@ -91,7 +91,7 @@ void UCoverBehaviour::BehaviourTick_Implementation(float DeltaTime)
 	switch (CurrentState)
 	{
 	case Moving :
-		DrawDebugSphere(GetWorld(),M_CurrentCoverLocation,200 ,16,FColor(255, 0, 0),false, -1, 0,5);
+		DrawDebugSphere(GetWorld(),M_CurrentCoverLocation,80 ,16,FColor(255, 0, 0),false, -1, 0,5);
 		if (!isMoving)
 		{
 			SelectCoverAndStartMove();
