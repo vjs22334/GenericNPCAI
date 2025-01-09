@@ -8,43 +8,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9c02080-df8e-421c-82ed-1fd1fe64a053" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/EQS/Context/EQS_Context_AllEnemies.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/EQS/Context/EQS_Context_AllTeammate.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/EQS/Context/EQS_Context_AllVisibleEnemies_ExceptTarget.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/EQS/Context/EQS_Context_AllVisibleEnemy.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/EQS/Context/EQS_Context_AllVisibleTeammates.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/EQS/Context/EQS_Context_Cover.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/EQS/Context/EQS_Context_Enemy.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/EQS/Context/EQS_Context_ReservedCoverLocations.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/EQS/Context/EQS_Context_ReservedFiringLocations.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Strafe.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/MI_LDGrid_Base_Grey.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/MI_LDGrid_Cover.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/MI_LDGrid_ExpBarrel.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/MI_LDGrid_JumpX.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/MI_LDGrid_Local_DarkGrey.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/MI_LDGrid_Local_Green.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/MI_LDGrid_Local_Grey.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/MI_LDGrid_Local_Red.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/MI_LDGrid_Local_White.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/MI_LDGrid_Water.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/MI_LDGrid_World.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/M_LDGrid_Base.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/M_LDGrid_Local.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/TechArt/MF_CheapLF_Vec2.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/TechArt/MF_LDGrid_Triplanar.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Materials/TechArt/MPC_LDGrid.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/StaticMeshes/SM_PH_Door_Double_4x4.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/StaticMeshes/SM_PH_Door_Single_2x4.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/StaticMeshes/SM_PH_Floor_2x2.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/StaticMeshes/SM_PH_Floor_4x4.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/StaticMeshes/SM_PH_Stairs_2x1.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/StaticMeshes/SM_PH_Stairs_2x2.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/StaticMeshes/SM_PH_Stairs_B_2x1.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/StaticMeshes/SM_PH_Wall_1x4.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/StaticMeshes/SM_PH_Wall_2x4.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/StaticMeshes/SM_PH_Wall_4x4_1.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/StaticMeshes/SM_PH_Wall_Corner_1x1.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/StaticMeshes/SM_PH_Window_2x4.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/StaticMeshes/SM_PH_Window_4x4.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Textures/T_Disabled.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/LevelDesignStuff/Textures/T_Grid.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/MyContent/Maps/Playground_2.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AIPlayground/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AIPlayground.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/AIPlayground.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AIPlayground.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/AIPlayground.uproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/Behaviours/BP_ShootBehaviour.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/AI/UtilityAI/Behaviours/BP_ShootBehaviour.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/AiClasses/BP_AI_Sniper.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/AiClasses/BP_AI_Sniper.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_DummyAI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_DummyAI.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_AllEnemies.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_AllEnemies.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_AllTeammate.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_AllTeammate.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_AllVisibleEnemies_ExceptTarget.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_AllVisibleEnemies_ExceptTarget.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_AllVisibleEnemy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_AllVisibleEnemy.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_AllVisibleTeammates.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_AllVisibleTeammates.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_Cover.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_Cover.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_Enemy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_Enemy.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_ReservedCoverLocations.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_ReservedCoverLocations.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_ReservedFiringLocations.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Context_ReservedFiringLocations.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyContent/Maps/GYM.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Maps/GYM.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Materials/MI_PrototypeGrid_Gray.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Materials/MI_PrototypeGrid_TopDark.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Meshes/SM_ChamferCube.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Meshes/SM_Cube.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Meshes/SM_QuarterCylinder.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Meshes/SM_Ramp.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/A_Cover.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/A_Cover.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Projectile.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_Projectile.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_ShooterBaseGameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Blueprint/BP_ShooterBaseGameMode.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Cover.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/EQS/EQS_Cover.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyContent/Maps/Playground.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Maps/Playground.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyContent/Material/MI_Manny_00_Team_B.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Material/MI_Manny_00_Team_B.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyContent/Material/MI_Manny_01_Team_B.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyContent/Material/MI_Manny_01_Team_B.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intermediate/CachedAssetRegistry.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Intermediate/CachedAssetRegistry.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/AutoScreenshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/AutoScreenshot.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/WindowsEditor/Editor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/WindowsEditor/Editor.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/WindowsEditor/EditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/WindowsEditor/EditorPerProjectUserSettings.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/WindowsEditor/Engine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/WindowsEditor/Engine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/WindowsEditor/Niagara.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/WindowsEditor/Niagara.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Logs/AIPlayground.log" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Logs/AIPlayground.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/CoverBehaviour.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/CoverBehaviour.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/ShootBehaviour.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/ShootBehaviour.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/ShootBehaviour.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AIPlayground/Private/UtilityAI/Behaviours/ShootBehaviour.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +88,8 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://1" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files (x86)/UE_5.1/Engine/Source/Runtime/Core/Public/Containers/Array.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files (x86)/UE_5.1/Engine/Source/Runtime/Core/Public/Math/Vector.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files (x86)/UE_5.1/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectHandle.h" root0="FORCE_HIGHLIGHTING" />
@@ -94,23 +114,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C/C++ Project.AI Playgrund.executor": "Debug",
-    "C/C++ Project.Unnamed.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "SolutionBuilderGeneralOptionsPage",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C/C++ Project.AI Playgrund.executor&quot;: &quot;Debug&quot;,
+    &quot;C/C++ Project.Unnamed.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SolutionBuilderGeneralOptionsPage&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="AI Playgrund" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -165,6 +185,7 @@
       <workItem from="1736017556447" duration="1509000" />
       <workItem from="1736063058098" duration="12618000" />
       <workItem from="1736264617075" duration="10109000" />
+      <workItem from="1736438976120" duration="3254000" />
     </task>
     <servers />
   </component>

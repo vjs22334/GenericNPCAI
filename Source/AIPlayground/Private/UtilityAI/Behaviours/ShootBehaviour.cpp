@@ -275,7 +275,7 @@ void UShootBehaviour::HandleQueryResult(TSharedPtr<FEnvQueryResult> EnvQueryResu
 	if (EnvQueryResult->FEnvQueryResult::IsSuccessful())
 	{
 		M_LocationToStrafeTo = EnvQueryResult->GetItemAsLocation(0);
-		DrawDebugSphere(GetWorld(), M_LocationToStrafeTo, 50, 16, FColor(0, 0, 225), false, -1, 0, 5);
+		//DrawDebugSphere(GetWorld(), M_LocationToStrafeTo, 50, 16, FColor(0, 0, 225), false, -1, 0, 5);
 		if (M_LocationToStrafeTo != FVector(0, 0, 0))
 		{
 			if (M_AIController)
