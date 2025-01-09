@@ -113,7 +113,7 @@ bool URepositionBehaviour::IsAmmoInClip()
 {
 	if (M_GoalOwner->Implements<UWeaponInterface>())
 	{
-		if (IWeaponInterface::Execute_GetPercentAmmoLeftInClip(GoalOwner) > 50)
+		if (IWeaponInterface::Execute_GetPercentAmmoLeftInClip(GoalOwner) >= 30)
 		{
 			return true;
 		}
