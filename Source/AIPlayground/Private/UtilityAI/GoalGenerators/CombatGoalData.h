@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BaseGoalData.h"
+#include "UtilityAI/GoalGenerators/BaseGoalData.h"
 #include "CombatGoalData.generated.h"
 
 /**

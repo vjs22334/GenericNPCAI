@@ -3,11 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BaseGoalGenerator.h"
 #include "CombatGoalData.h"
 #include "SearchGoalData.h"
 #include "Global/DetectionSystem.h"
 #include "Perception/AIPerceptionTypes.h"
+#include "UtilityAI/GoalGenerators/BaseGoalGenerator.h"
 #include "CombatGoalGenerator.generated.h"
 
 /**

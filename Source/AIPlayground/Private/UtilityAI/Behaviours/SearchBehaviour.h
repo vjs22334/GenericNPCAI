@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
-#include "BaseBehaviour.h"
+#include "UtilityAI/Behaviours/BaseBehaviour.h"
 #include "UtilityAI/GoalGenerators/SearchGoalData.h"
 #include "SearchBehaviour.generated.h"
 

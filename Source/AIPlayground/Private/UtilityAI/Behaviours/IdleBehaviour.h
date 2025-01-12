@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BaseBehaviour.h"
+#include "UtilityAI/Behaviours/BaseBehaviour.h"
 #include "IdleBehaviour.generated.h"
 
 /**

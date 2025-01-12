@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
-#include "BaseBehaviour.h"
 #include "Navigation/PathFollowingComponent.h"
+#include "UtilityAI/Behaviours/BaseBehaviour.h"
 #include "UtilityAI/GoalGenerators/CombatGoalData.h"
 #include "CombatBehaviour.generated.h"
 
