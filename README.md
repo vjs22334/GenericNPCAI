@@ -66,12 +66,12 @@ The project also contains a scenario with two teams of AI shooters fighting each
 You can create your own Goal Generators, Goal Datas and Behaviours by inheriting from UBaseGoalGenerator, UBaseGoalData and UBaseBehaviour classes respectively in either blueprints or C++ respectively (if you do implement in c++ I still recommend
 creating a BP of the class just to set its class default values. for example a behaviour needs to set its Goal Data Class field to associate it with a goaldata.) and then overriding the methods in them.
 
-You can find some examples under [/Content/MyContent/AI/UtilityAI](/Content/MyContent/AI/UtilityAI)
+You can find some examples under [/Content/MyContent/UtilityAI](/Content/MyContent/UtilityAI)
 
 In order to use this system on a pawn/character you need to add the following to it:
   *BehaviourSelectorComponent
   *GoalGeneratorComponent
-  *Set the AI controller of your pawn to the UtilityAIAIController in [/Content/MyContent/AI/UtilityAI](/Content/MyContent/AI/UtilityAI) 
+  *Set the AI controller of your pawn to the UtilityAIAIController in [/Content/MyConten/UtilityAI](/Content/MyContent/UtilityAI) 
 
 Then you just need to populate the Goal generator and Behaviour lists in the properties of GoalGeneratorComponent and BehaviourSelectorComponent respectively.
 
